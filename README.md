@@ -1,3 +1,4 @@
+# BIg Data Service stack
 This terraform scripts allow to user provision stack of OCI resources needed for Big Data Service, including service itself.
 In order to provision it, user have to follow steps:
 1) Provision some client compute instance in OCI (this instance can be removed after terraform scrips finish it work)
