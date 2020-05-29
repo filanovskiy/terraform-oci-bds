@@ -4,9 +4,9 @@ In order to provision it, user have to follow steps:
 2) ssh to this host, like this:
 ssh -i myPrivateKey opc@<ip address>
 3) Install git:
-sudo yum install -y git
+$ sudo yum install -y git
 4) clone terrform repository:
-git clone https://github.com/filanovskiy/terraform-oci-bds.git
+$ git clone https://github.com/filanovskiy/terraform-oci-bds.git
 5) go to repository dir and init terraform provider:
 cd  terraform-oci-bds
 terraform init
