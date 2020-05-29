@@ -13,6 +13,7 @@ resource "oci_identity_user" "bds_admin_usr" {
   provider    = oci.home
   name        = "bds_admin_usr"
   description = "user for managing BDS"
+  compartment_id = var.tenancy_ocid 
   freeform_tags = {
     "environment" = "bds-demo"
   }
