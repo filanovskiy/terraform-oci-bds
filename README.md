@@ -43,6 +43,8 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 
 `sudo ssh-keygen -t rsa -N "" -b 2048 -C demoBDSkey -f userdata/demoBDSkey`
 
+![TenancyInfo](images/tenancyinfo.png)
+
 7) apply this enviroment varibles:
 
 `source env-vars.sh`
