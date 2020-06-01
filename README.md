@@ -37,13 +37,23 @@ Note: you can search for host PublicIP on the host page:
 
 `$ terraform init`
 
-6) after this user have to fill up enviroment varibles in env-vars.sh:
+6) after this user have to fill up enviroment varibles in env-vars.sh
+
+| Name of the varible| Description | Comments |
+| ----------- | ----------- | ----------- |
+| TF_VAR_tenancy_ocid| Tenancy OCID| Have to be updated|
+| TF_VAR_compartment_name   | Name of the compartment, that will be created        |can leave as is         |
+
+To obtain tenancy go to the OCI Web UI and click on the user icon in the up right corner and there choose tenancy:
+
+![TenancyInfo](images/tenancyinfo.png)
+
+At this page you will need to obtain "TF_VAR_tenancy_ocid" and "TF_VAR_home_region" values
 
 Note: you may want to generate ssh key pair. You may simply run this command to match env-vars.sh config:
 
 `sudo ssh-keygen -t rsa -N "" -b 2048 -C demoBDSkey -f userdata/demoBDSkey`
 
-![TenancyInfo](images/tenancyinfo.png)
 
 7) apply this enviroment varibles:
 
