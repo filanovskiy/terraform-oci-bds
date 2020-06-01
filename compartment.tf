@@ -11,6 +11,6 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
   }
 }
 
-output "Compartment OCID:" {
+output "compartment_OCID:" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
