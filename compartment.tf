@@ -11,6 +11,6 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
   }
 }
 
-output "auto_created_compartment" {
+output ${var.compartment_name}" has OCID:" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
