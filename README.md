@@ -59,13 +59,13 @@ At this page you will need to obtain "TF_VAR_tenancy_ocid" and "TF_VAR_home_regi
 
 Note: you may want to generate ssh key pair. You may simply run this command to match env-vars.sh config:
 
-`sudo ssh-keygen -t rsa -N "" -b 2048 -C demoBDSkey -f userdata/demoBDSkey`
+`$ sudo ssh-keygen -t rsa -N "" -b 2048 -C demoBDSkey -f userdata/demoBDSkey`
 
 
 7) apply this enviroment varibles:
 
-`source env-vars.sh`
+`$ source env-vars.sh`
 
 8) Run provisioning:
 
-`terraform apply -auto-approve`
+`$ terraform apply -auto-approve`
