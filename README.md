@@ -19,7 +19,7 @@ Note: to keep it simple I suggest to use same kaypair for BDS cluster and edge n
 
 Note: you can search for host PublicIP on the host page:
 
-![](images/computeinstance.png)
+![PublicIP](images/computeinstance.png)
 
 
 3) Install git:
