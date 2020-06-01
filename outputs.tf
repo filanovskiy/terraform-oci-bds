@@ -1,5 +1,5 @@
 data oci_identity_compartment runtime_compartment {
-  id = var.compartment_ocid
+  id = local.compartment_ocid
 }
 
 output "resource_compartment_name" {

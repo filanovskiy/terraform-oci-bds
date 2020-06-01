@@ -10,5 +10,9 @@ variable region {
 }
 variable ssh_public_key {
 }
+variable ssh_private_key {
+}
+variable ssh_keys_prefix {
+}
 variable vm_image_id {
 }

@@ -1,7 +1,7 @@
 resource "oci_identity_policy" allow_bds_read_oci_resources {
   #Required
   provider       = oci.home
-  compartment_id = var.compartment_ocid
+  compartment_id = local.compartment_ocid
   description    = "Policy allowed BDS access OCI components"
   name           = "bds-required.pl"
   //statements = [var.policy_allow_bds data.oci_identity_compartment.runtime_compartment.name ,]
@@ -12,4 +12,3 @@ resource "oci_identity_policy" allow_bds_read_oci_resources {
     "environment" = "bds-demo"
   }
 }
-

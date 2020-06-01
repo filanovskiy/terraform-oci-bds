@@ -54,7 +54,7 @@ resource oci_core_instance bds-demo-egde {
       timeout     = "1m"
       host        = self.public_ip
       user        = "opc"
-      private_key = file("./userdata/privateKey")
+      private_key = var.ssh_private_key
     }
     source      = "./userdata/bootstrap.sh"
     destination = "~/bootstrap.sh"
@@ -65,7 +65,7 @@ resource oci_core_instance bds-demo-egde {
       timeout     = "1m"
       host        = self.public_ip
       user        = "opc"
-      private_key = file("./userdata/privateKey")
+      private_key = var.ssh_private_key
     }
     source      = "./edge_env.sh"
     destination = "~/edge_env.sh"
@@ -76,9 +76,9 @@ provisioner "file" {
       timeout     = "1m"
       host        = self.public_ip
       user        = "opc"
-      private_key = file("./userdata/privateKey")
+      private_key = var.ssh_private_key
     }
-    source      = "./userdata/privateKey"
+    source      = var.ssh_keys_prefix
     destination = "~/.ssh/bdsKey"
   }
 
@@ -88,7 +88,7 @@ provisioner "file" {
       timeout     = "1m"
       host        = self.public_ip
       user        = "opc"
-      private_key = file("./userdata/privateKey")
+      private_key = var.ssh_private_key
     }
     inline = [
       "chmod +x ~/bootstrap.sh",

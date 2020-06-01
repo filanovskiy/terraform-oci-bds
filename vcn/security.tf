@@ -111,7 +111,7 @@ resource oci_core_default_security_list bds-demo-security-list {
     #udp_options = <<Optional value not found in discovery>>
   }
 
-
+ingress_security_rules {
     description = "Port for RStudio server"
     #icmp_options = <<Optional value not found in discovery>>
     protocol = "6"

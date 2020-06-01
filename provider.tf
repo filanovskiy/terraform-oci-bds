@@ -1,10 +1,10 @@
 provider "oci" {
-  auth = "InstancePrincipal"
+  auth   = "InstancePrincipal"
   region = var.region
 }
 
 provider "oci" {
-  auth = "InstancePrincipal"
+  auth   = "InstancePrincipal"
   alias  = "home"
   region = var.home_region
 }

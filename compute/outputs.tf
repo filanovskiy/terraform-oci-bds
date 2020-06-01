@@ -8,8 +8,6 @@ data oci_core_subnet customer_subnet{
 subnet_id=var.subnet_ocid
 }
 
-
-
 data "oci_core_vnic" "edge_node_vnic" {
   vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[0], "vnic_id")}"
 }
