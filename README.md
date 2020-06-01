@@ -42,7 +42,14 @@ Note: you can search for host PublicIP on the host page:
 | Name of the varible| Description | Comments |
 | ----------- | ----------- | ----------- |
 | TF_VAR_tenancy_ocid| Tenancy OCID| Have to be updated|
-| TF_VAR_compartment_name   | Name of the compartment, that will be created        |can leave as is         |
+| TF_VAR_compartment_name   | Name of the compartment, that will be created        |Can leave as is         |
+| TF_VAR_home_region   | Home region|Have to be updated|
+| TF_VAR_region   | Region where stack will be provisioned|Can leave as is         |
+| TF_VAR_bds_instance_cluster_admin_password   | Cloudera Manager admin password|It's better to update        |
+| TF_VAR_ssh_keys_prefix   | Prefix of ssh-rsa kay pair|Can leave as is|
+| TF_VAR_ssh_public_key   | Path to public key|Can leave as is|
+| TF_VAR_ssh_private_key   | Path to private key|Can leave as is|
+
 
 To obtain tenancy go to the OCI Web UI and click on the user icon in the up right corner and there choose tenancy:
 
