@@ -3,8 +3,8 @@ resource "oci_identity_group" "bds_admin_grp" {
   provider       = oci.home
   name           = "bds_admin_grp"
   description    = "group for bds admins"
-  // compartment_id = var.tenancy_ocid
-  compartment_id = local.compartment_ocid
+  compartment_id = var.tenancy_ocid
+  // compartment_id = local.compartment_ocid
   freeform_tags = {
     "environment" = "bds-demo"
   }
