@@ -33,3 +33,7 @@ resource "local_file" "edge_env" {
   )
   filename = "edge_env.sh"
 }
+
+output "cm_public_ip" {
+  value = oci_core_public_ip.user_ui_password.cm_public_ip
+}
