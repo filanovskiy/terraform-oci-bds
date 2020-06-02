@@ -1,7 +1,7 @@
 resource oci_core_instance bds-demo-egde {
-  depends_on = [oci_bds_bds_instance.demo-bds]
+  depends_on          = [oci_bds_bds_instance.demo-bds]
   availability_domain = data.oci_identity_availability_domain.US-ASHBURN-AD-1.name
-  
+
   agent_config {
     is_management_disabled = "false"
     is_monitoring_disabled = "false"
@@ -70,7 +70,7 @@ resource oci_core_instance bds-demo-egde {
     source      = "./edge_env.sh"
     destination = "~/edge_env.sh"
   }
-provisioner "file" {
+  provisioner "file" {
     connection {
       agent       = false
       timeout     = "1m"

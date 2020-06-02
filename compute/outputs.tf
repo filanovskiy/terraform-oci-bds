@@ -4,8 +4,8 @@ data oci_core_vnic_attachments edge_node_vnics {
   instance_id         = oci_core_instance.bds-demo-egde.id
 }
 
-data oci_core_subnet customer_subnet{
-subnet_id=var.subnet_ocid
+data oci_core_subnet customer_subnet {
+  subnet_id = var.subnet_ocid
 }
 
 data "oci_core_vnic" "edge_node_vnic" {
@@ -18,18 +18,18 @@ output "public-ip" {
 
 resource "local_file" "edge_env" {
   content = join("", ["export CLUSTER=${oci_bds_bds_instance.demo-bds.display_name} \n",
-                      "export MN0_HOSTNAME=${oci_bds_bds_instance.demo-bds.nodes[0].display_name} \n",
-                      "export MN0_IP=${oci_bds_bds_instance.demo-bds.nodes[0].ip_address} \n",
-                      "export CM_IP=${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url,8,length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url)-13)} \n",
-                      "export CM_ADMIN_USER=admin \n",
-                      "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)} \n",
-                      "export PRIVATE_KEY=/home/opc/.ssh/bdsKey \n",
-                      "export SUBNET_CIDR=${data.oci_core_subnet.customer_subnet.cidr_block} \n",
-                      "export EDGE_IP=$(hostname -I)  \n",
-                      "export EDGE_HOSTNAME=$(hostname -a) \n",
-                      "export EDGE_FQDN=$(hostname -A) \n",
-                      "export ETC_HOSTS=$EDGE_IP $EDGE_FQDN $EDGE_HOSTNAME",
-  ]
+    "export MN0_HOSTNAME=${oci_bds_bds_instance.demo-bds.nodes[0].display_name} \n",
+    "export MN0_IP=${oci_bds_bds_instance.demo-bds.nodes[0].ip_address} \n",
+    "export CM_IP=${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)} \n",
+    "export CM_ADMIN_USER=admin \n",
+    "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)} \n",
+    "export PRIVATE_KEY=/home/opc/.ssh/bdsKey \n",
+    "export SUBNET_CIDR=${data.oci_core_subnet.customer_subnet.cidr_block} \n",
+    "export EDGE_IP=$(hostname -I)  \n",
+    "export EDGE_HOSTNAME=$(hostname -a) \n",
+    "export EDGE_FQDN=$(hostname -A) \n",
+    "export ETC_HOSTS=$EDGE_IP $EDGE_FQDN $EDGE_HOSTNAME",
+    ]
   )
   filename = "edge_env.sh"
 }

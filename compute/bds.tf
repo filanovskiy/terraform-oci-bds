@@ -44,31 +44,31 @@ resource oci_bds_bds_instance demo-bds {
     subnet_id                = var.subnet_ocid
   }
 }
-  resource "null_resource" "remote-exec" {
-    connection {
-      agent       = false
-      timeout     = "1m"
-      host        = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url,8,length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url)-13)
-      user        = "opc"
-      private_key = var.ssh_private_key
-    }
-    inline = [
-      "sudo service docker start",
-      "sudo systemctl enable docker",
+resource "null_resource" "remote-exec" {
+  connection {
+    agent       = false
+    timeout     = "1m"
+    host        = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+    user        = "opc"
+    private_key = var.ssh_private_key
+  }
+  inline = [
+    "sudo service docker start",
+    /* "sudo systemctl enable docker",
       "sudo docker pull iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest",
       "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
-      "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
-    ]
-  }
+      "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin", */
+  ]
+}
 
-  resource "oci_core_public_ip" "cm_public_ip" {
-    #Required
-    compartment_id = var.compartment_ocid
-    lifetime = "Ephemeral"
-    #Optional
-    display_name = "bds-demo-cm_public_ip"
-    freeform_tags = {
-      "environment" = "bds-demo"
-      }
-    private_ip_id = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url,8,length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url)-13)
+resource "oci_core_public_ip" "cm_public_ip" {
+  #Required
+  compartment_id = var.compartment_ocid
+  lifetime       = "Ephemeral"
+  #Optional
+  display_name = "bds-demo-cm_public_ip"
+  freeform_tags = {
+    "environment" = "bds-demo"
+  }
+  private_ip_id = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
 }
