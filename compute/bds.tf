@@ -66,7 +66,7 @@ resource "null_resource" "remote-exec" {
     ]
   }
   }
- */
+ 
 
 
 resource "oci_core_private_ip" "test_private_ip" {
@@ -78,6 +78,7 @@ resource "oci_core_private_ip" "test_private_ip" {
     ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
     freeform_tags = {
     "environment" = "bds-demo"
+
   }
 }
 
@@ -91,4 +92,4 @@ data "oci_core_vnic_attachments" "CMVnics" {
 # Gets the OCID of the first (default) vNIC
 data "oci_core_vnic" "CMVnic" {
     vnic_id = "${lookup(data.oci_core_vnic_attachments.CMVnics.vnic_attachments[0], "vnic_id")}"
-}
+} */
