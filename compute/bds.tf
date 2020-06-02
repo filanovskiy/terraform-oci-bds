@@ -47,6 +47,7 @@ resource oci_bds_bds_instance demo-bds {
 
 
 resource "null_resource" "remote-exec" {
+  depends_on          = [oci_bds_bds_instance.demo-bds]
       connection {
       agent       = false
       timeout     = "30m"
@@ -81,6 +82,7 @@ resource "null_resource" "remote-exec" {
 
 resource "oci_core_public_ip" "cm_public_ip" {
   #Required
+   depends_on          = [oci_bds_bds_instance.demo-bds]
   compartment_id = var.compartment_ocid
   lifetime       = "Ephemeral"
   #Optional
