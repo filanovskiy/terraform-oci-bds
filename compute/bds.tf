@@ -82,13 +82,13 @@ resource "null_resource" "remote-exec" {
 
 resource "oci_core_public_ip" "cm_public_ip" {
   #Required
-   depends_on          = [oci_bds_bds_instance.demo-bds]
+  depends_on          = [oci_bds_bds_instance.demo-bds]
   compartment_id = var.compartment_ocid
   lifetime       = "Ephemeral"
   #Optional
   display_name = "bds-demo-cm_public_ip"
+  private_ip_id = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
   freeform_tags = {
     "environment" = "bds-demo"
   }
-  private_ip_id = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
 }
