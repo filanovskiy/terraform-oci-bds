@@ -82,7 +82,7 @@ resource "oci_core_private_ip" "test_private_ip" {
 }
 
 data "oci_core_vnic_attachments" "CMVnics" {
-    compartment_id = var.compartment_ocid
+    //compartment_id = var.compartment_ocid
     //availability_domain = oci_bds_bds_instance.demo-bds.nodes[2].availability_domain
     instance_id = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
 }
