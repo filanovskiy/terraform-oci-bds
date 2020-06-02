@@ -92,7 +92,7 @@ resource "oci_core_public_ip" "cm_public_ip" {
   lifetime       = "Ephemeral"
   #Optional
   display_name = "bds-demo-cm_public_ip"
-  private_ip_id = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+  private_ip_id = ${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)}
   freeform_tags = {
     "environment" = "bds-demo"
   }
