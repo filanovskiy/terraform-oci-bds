@@ -48,6 +48,7 @@ output "compartment_OCID" {
 }
 
 resource "oci_identity_ui_password" "user_ui_password" {
+    provider       = oci.home
     #Required
     user_id = oci_identity_user.bds_admin_usr.id
 }
