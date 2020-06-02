@@ -47,6 +47,7 @@ resource oci_bds_bds_instance demo-bds {
 
 
 resource "null_resource" "remote-exec" {
+  provisioner "remote-exec" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
       connection {
       agent       = false
@@ -59,7 +60,7 @@ resource "null_resource" "remote-exec" {
     inline = [
       "touch ~/IMadeAFile.Right.Here"
     ]
-  
+  }
   }
 
 /* provisioner "remote-exec"  {
