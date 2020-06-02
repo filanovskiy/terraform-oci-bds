@@ -44,7 +44,7 @@ resource oci_bds_bds_instance demo-bds {
     subnet_id                = var.subnet_ocid
   }
 }
-/* resource "null_resource" "remote-exec" {
+provisioner "remote-exec"  {
   connection {
     agent       = false
     timeout     = "1m"
@@ -60,7 +60,7 @@ resource oci_bds_bds_instance demo-bds {
       "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
       "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
   ]
-} */
+}
 
 resource "oci_core_public_ip" "cm_public_ip" {
   #Required
