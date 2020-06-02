@@ -15,5 +15,5 @@ output "user_name" {
 }
 
 output "bds_admin_usr_one_time_password" {
-  value = data.oci_identity_ui_password.user_ui_password
+  value = oci_identity_ui_password.user_ui_password
 }
