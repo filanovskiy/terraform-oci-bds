@@ -102,7 +102,7 @@ resource "oci_core_private_ip" "test_private_ip" {
 data "oci_core_vnic_attachments" "CMVnics" {
     compartment_id = var.compartment_ocid
     // availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.bastion_ad - 1], "name")}"
-    instance_id = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
+    instance_id = oci_bds_bds_instance.demo-bds.nodes[0].instance_id
 }
 
 # Gets the OCID of the first (default) vNIC
