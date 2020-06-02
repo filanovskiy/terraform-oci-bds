@@ -48,7 +48,8 @@ resource "null_resource" "remote-exec" {
   connection {
     agent       = false
     timeout     = "1m"
-    host        = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+    //host        = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+    host = oci_core_public_ip.cm_public_ip.ip_address
     user        = "opc"
     private_key = var.ssh_private_key
   }
