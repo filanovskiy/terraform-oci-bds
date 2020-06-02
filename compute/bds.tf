@@ -44,7 +44,7 @@ resource oci_bds_bds_instance demo-bds {
     subnet_id                = var.subnet_ocid
   }
 }
-  resource "remote-exec" {
+  resource "null_resource" "remote-exec" {
     connection {
       agent       = false
       timeout     = "1m"
