@@ -95,3 +95,7 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 - Compartment OCID
 - BDS Admin username
 - BDS Admin one time password (you have to change it right after login)
+
+10) to ssh to edge node, run:
+
+`ssh -i userdata/demoBDSkey opc@<edge ip address>`
