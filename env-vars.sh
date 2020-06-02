@@ -1,6 +1,6 @@
 #!/bin/sh
 # Required for the OCI Provider
-export TF_VAR_tenancy_ocid="ocid1.tenancy.oc1..aaaaaaaazo7h6yqgac7aunojr2tjsxux3ipdyamc3fgkvz7lubvdtsjyf4gq"
+export TF_VAR_tenancy_ocid="ocid1.tenancy.oc1..aaaa........"
 export TF_VAR_compartment_name="bds-pm-tf-auto"
 export TF_VAR_region="us-ashburn-1"
 export TF_VAR_home_region="us-phoenix-1"

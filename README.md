@@ -22,9 +22,11 @@ Note: you can search for host PublicIP on the host page:
 ![PublicIP](images/computeinstance.png)
 
 
-3) Install git:
+3) Install git and terraform:
 
 `$ sudo yum install -y git`
+
+`$ sudo yum install -y terraform`
 
 4) clone terrform repository:
 
@@ -46,9 +48,9 @@ Note: you can search for host PublicIP on the host page:
 | TF_VAR_home_region   | Home region|Have to be updated|
 | TF_VAR_region   | Region where stack will be provisioned|Can leave as is         |
 | TF_VAR_bds_instance_cluster_admin_password   | Cloudera Manager admin password|It's better to update        |
-| TF_VAR_ssh_keys_prefix   | Prefix of ssh-rsa kay pair|Can leave as is|
-| TF_VAR_ssh_public_key   | Path to public key|Can leave as is|
-| TF_VAR_ssh_private_key   | Path to private key|Can leave as is|
+| TF_VAR_ssh_keys_prefix   | Prefix of ssh-rsa kay pair|Can leave as is (don't forget to generate keys)|
+| TF_VAR_ssh_public_key   | Path to public key|Can leave as is (don't forget to generate keys)|
+| TF_VAR_ssh_private_key   | Path to private key|Can leave as is (don't forget to generate keys)|
 
 
 To obtain tenancy go to the OCI Web UI and click on the user icon in the up right corner and there choose tenancy:
@@ -61,6 +63,7 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 
 `$ sudo ssh-keygen -t rsa -N "" -b 2048 -C demoBDSkey -f userdata/demoBDSkey`
 
+`$ sudo chown opc:opc userdata/demoBDSkey*`
 
 7) apply this enviroment varibles:
 
