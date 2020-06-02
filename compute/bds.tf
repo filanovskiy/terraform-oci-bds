@@ -47,8 +47,8 @@ resource oci_bds_bds_instance demo-bds {
 
 
 resource "null_resource" "remote-exec" {
-  provisioner "remote-exec" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
+  provisioner "remote-exec" {
       connection {
       agent       = false
       timeout     = "30m"
