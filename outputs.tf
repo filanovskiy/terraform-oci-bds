@@ -21,3 +21,8 @@ output "bds_admin_usr_one_time_password" {
 /* output "cm_public_ip" {
   value = module.compute.cm_public_ip
 } */
+
+
+output "cm_instance_ocid" {
+  value = module.compute.cm_instance_ocid
+}

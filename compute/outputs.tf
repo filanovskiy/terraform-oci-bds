@@ -37,3 +37,7 @@ resource "local_file" "edge_env" {
 /* output "cm_public_ip" {
   value = oci_core_public_ip.cm_public_ip.ip_address
 } */
+
+output "cm_instance_ocid" {
+  value = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
+}
