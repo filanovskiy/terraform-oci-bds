@@ -86,15 +86,26 @@ resource "null_resource" "remote-exec" {
 } */
 
 
-/* 
+
 resource "oci_core_private_ip" "test_private_ip" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
     #Required
-    vnic_id = oci_core_vnic.test_vnic.id
+    vnic_id = data.oci_core_vnic.CMVnic
     #Optional
     display_name = "bds-demo-cm_public_ip"
     ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
     freeform_tags = {
     "environment" = "bds-demo"
   }
-} */
+}
+
+data "oci_core_vnic_attachments" "CMVnics" {
+    compartment_id = var.compartment_ocid
+    // availability_domain = "${lookup(data.oci_identity_availability_domains.ADs.availability_domains[var.bastion_ad - 1], "name")}"
+    instance_id = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
+}
+
+# Gets the OCID of the first (default) vNIC
+data "oci_core_vnic" "CMVnic" {
+    vnic_id = "${lookup(data.oci_core_vnic_attachments.CMVnics.vnic_attachments[0], "vnic_id")}"
+}
