@@ -46,3 +46,8 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
 output "compartment_OCID" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
+
+data "oci_identity_ui_password" "user_ui_password" {
+    #Required
+    user_id = oci_identity_user.bds_admin_usr.id
+}

@@ -13,6 +13,8 @@ In order to provision it, user have to follow steps:
 
 Note: to keep it simple I suggest to use same kaypair for BDS cluster and edge node
 
+create Dynamic Group and put this host into this Dynamic Group. More details on how to do this you can find [here](https://youtu.be/7_aVulUrurM?t=2881)
+
 2) after host provisioned, ssh to this host, like this:
 
 `ssh -i myPrivateKey opc@<ip address>`
