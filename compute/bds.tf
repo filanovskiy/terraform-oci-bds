@@ -54,7 +54,7 @@ provisioner "remote-exec"  {
     private_key = var.ssh_private_key
   }
   inline = [
-    "sudo service docker start"
+    "sudo service docker start",
     "sudo systemctl enable docker",
       "sudo docker pull iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest",
       "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
