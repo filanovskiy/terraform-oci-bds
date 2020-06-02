@@ -1,5 +1,20 @@
 # Big Data Service stack
-This terraform scripts allow to user provision stack of OCI resources needed for Big Data Service, including service itself.
+This terraform scripts allow to user provision stack of OCI resources needed for Big Data Service, including service itself:
+
+- Edge Node
+- Big Data Service
+- BDS admin user and group
+- Policies required to provision Big Data Service
+- Network artifacts:
+	- VCN
+	- Subnet
+	- Service Gateways
+	- NAT gateway
+	- Internet gateway
+	- Security lists with appropriate settings
+	- Routing tables
+	- DHCP
+
 In order to provision it, user have to follow steps:
 
 1) Provision some client compute instance in OCI (this instance can be removed after terraform scrips finish it work). There are multiple ways, for example:
@@ -74,3 +89,9 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 8) Run provisioning:
 
 `$ terraform apply -auto-approve`
+
+9) After script finished, user will see output, containing:
+- Edge node IP
+- Compartment OCID
+- BDS Admin username
+- BDS Admin one time password (you have to change it right after login)
