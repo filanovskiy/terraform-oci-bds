@@ -45,7 +45,7 @@ resource oci_bds_bds_instance demo-bds {
   }
 }
 
-
+/* 
 resource "null_resource" "remote-exec" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
@@ -66,25 +66,7 @@ resource "null_resource" "remote-exec" {
     ]
   }
   }
-
-/* provisioner "remote-exec"  {
-  connection {
-    agent       = false
-    timeout     = "1m"
-    //host        = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
-    host = oci_core_public_ip.cm_public_ip.ip_address
-    user        = "opc"
-    private_key = var.ssh_private_key
-  }
-  inline = [
-    "sudo service docker start",
-    "sudo systemctl enable docker",
-      "sudo docker pull iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest",
-      "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
-      "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
-  ]
-} */
-
+ */
 
 /* 
 resource "oci_core_private_ip" "test_private_ip" {
