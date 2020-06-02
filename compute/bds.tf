@@ -63,7 +63,7 @@ resource oci_bds_bds_instance demo-bds {
 
   resource "oci_core_public_ip" "cm_public_ip" {
     #Required
-    compartment_id = var.compartment_id
+    compartment_id = var.compartment_ocid
     lifetime = "Ephemeral"
     #Optional
     display_name = "bds-demo-cm_public_ip"
