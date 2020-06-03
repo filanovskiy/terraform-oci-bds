@@ -3,7 +3,7 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 
 - Edge Node
 - Big Data Service
-- BDS admin user and group
+- BDS admin user/password and group
 - Policies required to provision Big Data Service
 - Network artifacts:
 	- VCN
