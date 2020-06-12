@@ -41,9 +41,7 @@ Note: you can search for host PublicIP on the host page:
 
 3) Install git and terraform:
 
-`$ sudo yum install -y git`
-
-`$ sudo yum install -y terraform`
+`$ sudo yum install -y git terraform`
 
 4) clone terrform repository:
 
