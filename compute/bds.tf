@@ -101,6 +101,7 @@ data "oci_core_private_ips" "test_private_ips_by_ip_address" {
 }
 
 resource "oci_core_public_ip" "cm_public_ip" {
+  depends_on          = [oci_bds_bds_instance.demo-bds]
     #Required
     compartment_id = var.compartment_ocid
     lifetime = "EPHEMERAL"
