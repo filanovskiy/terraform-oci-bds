@@ -93,3 +93,22 @@ data "oci_core_vnic_attachments" "CMVnics" {
 data "oci_core_vnic" "CMVnic" {
     vnic_id = "${lookup(data.oci_core_vnic_attachments.CMVnics.vnic_attachments[0], "vnic_id")}"
 } */
+
+data "oci_core_private_ips" "test_private_ips_by_ip_address" {
+    #Optional
+    ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+    subnet_id = var.subnet_ocid
+}
+
+resource "oci_core_public_ip" "cm_public_ip" {
+    #Required
+    compartment_id = var.compartment_ocid
+    lifetime = "EPHEMERAL"
+
+    #Optional
+    display_name = "BDS Demo Cloudera Manager IP"
+      freeform_tags = {
+    "environment" = "bds-demo"
+  }
+    private_ip_id = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
+}
