@@ -49,5 +49,5 @@ data "oci_core_private_ips" "test_private_ips_by_ip_address" {
 }
 
 output "test_private_ips_by_ip_address" {
-  value = data.oci_core_private_ips.test_private_ips_by_ip_address
+  value = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
 }
