@@ -41,3 +41,13 @@ resource "local_file" "edge_env" {
 output "cm_instance_ocid" {
   value = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
 }
+
+data "oci_core_private_ips" "test_private_ips_by_ip_address" {
+    #Optional
+    ip_address = ${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)}
+    subnet_id = var.subnet_ocid
+}
+
+output "test_private_ips_by_ip_address" {
+  value = data.oci_core_private_ips.test_private_ips_by_ip_address.id
+}

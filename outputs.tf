@@ -18,10 +18,9 @@ output "bds_admin_usr_one_time_password" {
   value = oci_identity_ui_password.user_ui_password.password
 }
 
-/* output "cm_public_ip" {
-  value = module.compute.cm_public_ip
-} */
-
+output "test_private_ips_by_ip_address" {
+  value = module.compute.test_private_ips_by_ip_address
+}
 
 output "cm_instance_ocid" {
   value = module.compute.cm_instance_ocid
