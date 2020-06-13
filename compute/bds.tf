@@ -45,14 +45,15 @@ resource oci_bds_bds_instance demo-bds {
   }
 }
 
-/* 
+
 resource "null_resource" "remote-exec" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
       connection {
       agent       = false
       timeout     = "30m"
-      host = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+      //host = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+      host = oci_core_public_ip.cm_public_ip.ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
@@ -66,7 +67,7 @@ resource "null_resource" "remote-exec" {
     ]
   }
   }
-  */
+ 
 /*
 resource "oci_core_private_ip" "test_private_ip" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
