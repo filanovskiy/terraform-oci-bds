@@ -14,6 +14,8 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 	- Security lists with appropriate settings
 	- Routing tables
 	- DHCP
+- Public IP (and assign it to Cloudera Manager host)
+- Pull zeppelin image on the Cloudera Manager host
 
 In order to provision it, user have to follow steps:
 
