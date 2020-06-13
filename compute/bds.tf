@@ -45,7 +45,7 @@ resource oci_bds_bds_instance demo-bds {
   }
 }
 
-
+/* 
 resource "null_resource" "remote-exec" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
@@ -66,7 +66,7 @@ resource "null_resource" "remote-exec" {
     ]
   }
   }
- 
+  */
 /*
 resource "oci_core_private_ip" "test_private_ip" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
