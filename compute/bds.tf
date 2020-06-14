@@ -7,9 +7,9 @@ resource oci_bds_bds_instance demo-bds {
   compartment_id         = var.compartment_ocid
   //cluster_admin_password = var.bds_instance_cluster_admin_password
   // "SW5pdDAxIw==", // "Init01#"
-  // SW5pdDAxMTgwOTEK // Init0118091
-
-  cluster_admin_password = "SW5pdDAxIw=="
+  // SW5pdDAxMTgwOTEK // Init0118091#
+  // V2VsY29tZTEhCg== // Welcome1!
+  cluster_admin_password = "V2VsY29tZTEhCg=="
   cluster_public_key     = var.ssh_public_key
 
   display_name = "bds-demo"
