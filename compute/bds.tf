@@ -9,7 +9,8 @@ resource oci_bds_bds_instance demo-bds {
   // "SW5pdDAxIw==", // "Init01#"
   // SW5pdDAxMTgwOTEK // Init0118091
   // V2VsY29tZTEhCg== // Welcome1!
-  cluster_admin_password = "V2VsY29tZTEhCg=="
+  // cluster_admin_password = "V2VsY29tZTEhCg=="
+  cluster_admin_password = "SW5pdDAxIw=="
   cluster_public_key     = var.ssh_public_key
 
   display_name = "bds-demo"
