@@ -5,12 +5,12 @@ resource oci_bds_bds_instance demo-bds {
   #cluster_public_key = <<Required attribute not found in discovery>>
   cluster_version        = "CDH6"
   compartment_id         = var.compartment_ocid
-  //cluster_admin_password = var.bds_instance_cluster_admin_password
+  cluster_admin_password = var.bds_instance_cluster_admin_password
   // "SW5pdDAxIw==", // "Init01#" - works
   // SW5pdDAxMTgwOTEjCg== // Init0118091#
   // V2VsY29tZTEhCg== // Welcome1! - doesn't
   // cluster_admin_password = "V2VsY29tZTEhCg=="
-  cluster_admin_password = "SW5pdDAxMTgwOTEjCg=="
+  // cluster_admin_password = "SW5pdDAxMTgwOTEjCg=="
   cluster_public_key     = var.ssh_public_key
 
   display_name = "bds-demo"
