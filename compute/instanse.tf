@@ -13,7 +13,6 @@ resource oci_core_instance bds-demo-egde {
     hostname_label         = "bds-demo-egde"
     nsg_ids                = []
     skip_source_dest_check = "false"
-    //subnet_id              = oci_core_subnet.export_bds.id
     subnet_id = var.subnet_ocid
   }
 
