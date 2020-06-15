@@ -1,5 +1,5 @@
 resource oci_core_instance bds-demo-egde {
-  # depends_on          = [oci_bds_bds_instance.demo-bds]
+  depends_on          = [oci_bds_bds_instance.demo-bds]
   availability_domain = data.oci_identity_availability_domain.US-ASHBURN-AD-1.name
 
   agent_config {
@@ -22,7 +22,8 @@ resource oci_core_instance bds-demo-egde {
     boot_volume_type                    = "PARAVIRTUALIZED"
     firmware                            = "UEFI_64"
     is_consistent_volume_naming_enabled = "true"
-    is_pv_encryption_in_transit_enabled = "true"
+    //is_pv_encryption_in_transit_enabled = "true"
+    is_pv_encryption_in_transit_enabled = "false"
     network_type                        = "VFIO"
     remote_data_volume_type             = "PARAVIRTUALIZED"
   }
