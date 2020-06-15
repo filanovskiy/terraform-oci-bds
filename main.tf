@@ -22,3 +22,7 @@ module "compute" {
 locals {
   compartment_ocid = oci_identity_compartment.bds-demo-compartment.id
 }
+
+locals {
+}
+
