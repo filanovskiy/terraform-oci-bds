@@ -22,7 +22,7 @@ resource oci_core_instance bds-demo-egde {
     firmware                            = "UEFI_64"
     is_consistent_volume_naming_enabled = "true"
     //is_pv_encryption_in_transit_enabled = "true"
-    is_pv_encryption_in_transit_enabled = "false"
+    //is_pv_encryption_in_transit_enabled = "false"
     network_type                        = "VFIO"
     remote_data_volume_type             = "PARAVIRTUALIZED"
   }
