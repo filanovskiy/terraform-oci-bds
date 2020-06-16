@@ -8,3 +8,4 @@ export TF_VAR_bds_instance_cluster_admin_password=`echo 'Welcome1!'|openssl base
 export TF_VAR_ssh_keys_prefix="./userdata/demoBDSkey"
 export TF_VAR_ssh_public_key=$(cat $TF_VAR_ssh_keys_prefix.pub)
 export TF_VAR_ssh_private_key=$(cat $TF_VAR_ssh_keys_prefix)
+export TF_VAR_bds_cluster_name="bds-demo"

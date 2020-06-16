@@ -18,6 +18,8 @@ variable ssh_keys_prefix {
 }
 variable ssh_private_key {
 }
+variable bds_cluster_name {
+}
 variable vm_image_id {
   type = map
   default = {

@@ -13,7 +13,7 @@ resource oci_bds_bds_instance demo-bds {
   // cluster_admin_password = "SW5pdDAxMTgwOTEjCg=="
   cluster_public_key     = var.ssh_public_key
 
-  display_name = "bds-demo"
+  display_name = var.bds_cluster_name
 
   freeform_tags = {
     "environment" = "bds-demo"

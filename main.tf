@@ -17,6 +17,7 @@ module "compute" {
   vm_image_id                         = var.vm_image_id
   bds_instance_cluster_admin_password = var.bds_instance_cluster_admin_password
   subnet_ocid                         = module.vcn.subnet_ids
+  bds_cluster_name                    = var.bds_cluster_name
 }
 
 locals {
