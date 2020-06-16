@@ -68,7 +68,7 @@ Note: you can search for host PublicIP on the host page:
 | TF_VAR_ssh_keys_prefix   | Prefix of ssh-rsa kay pair|Can leave as is (don't forget to generate keys)|
 | TF_VAR_ssh_public_key   | Path to public key|Can leave as is (don't forget to generate keys)|
 | TF_VAR_ssh_private_key   | Path to private key|Can leave as is (don't forget to generate keys)|
-| TF_VAR_bds_cluster_name   | Big Data Service cluster name|
+| TF_VAR_bds_cluster_name   | Big Data Service cluster name| Can leave as is
 
 To obtain tenancy go to the OCI Web UI and click on the user icon in the up right corner and there choose tenancy:
 
