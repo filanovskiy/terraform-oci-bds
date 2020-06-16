@@ -16,3 +16,5 @@ variable ssh_keys_prefix {
 }
 variable vm_image_id {
 }
+variable bds_cluster_name {
+}
