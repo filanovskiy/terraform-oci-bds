@@ -13,7 +13,7 @@ resource "oci_functions_function" "bds-demo-function" {
   #Required
   application_id = oci_functions_application.bds-demo-app.id
   display_name   = "bds-demo-function"
-  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:latest"
+  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:0.0.2"
   memory_in_mbs  = "128"
 
   #Optional
@@ -22,6 +22,7 @@ resource "oci_functions_function" "bds-demo-function" {
 }
 
 resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
+    depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
   #Required
   function_id = oci_functions_function.bds-demo-function.id
 }
@@ -29,7 +30,7 @@ resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
 resource "oci_apigateway_gateway" "test_gateway" {
   #Required
   compartment_id = local.compartment_ocid
-  endpoint_type  = "Oracle Function"
+  endpoint_type  = "PUBLIC"
   subnet_id      = module.vcn.subnet_ids
 
   #Optional

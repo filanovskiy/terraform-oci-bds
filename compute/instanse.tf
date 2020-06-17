@@ -1,5 +1,5 @@
 resource oci_core_instance bds-demo-egde {
-  depends_on          = [oci_bds_bds_instance.demo-bds]
+  //depends_on          = [oci_bds_bds_instance.demo-bds]
   availability_domain = data.oci_identity_availability_domain.US-ASHBURN-AD-1.name
 
   agent_config {
@@ -9,8 +9,8 @@ resource oci_core_instance bds-demo-egde {
   compartment_id = var.compartment_ocid
   create_vnic_details {
     assign_public_ip       = "true"
-    display_name           = "bds-demo-egde"
-    hostname_label         = "bds-demo-egde"
+    display_name           = "bds-demo-egde${count.index}"
+    hostname_label         = "bds-demo-egde${count.index}"
     nsg_ids                = []
     skip_source_dest_check = "false"
     subnet_id              = var.subnet_ocid
@@ -57,17 +57,7 @@ resource oci_core_instance bds-demo-egde {
     source      = "./userdata/bootstrap.sh"
     destination = "~/bootstrap.sh"
   }
-  provisioner "file" {
-    connection {
-      agent       = false
-      timeout     = "1m"
-      host        = self.public_ip
-      user        = "opc"
-      private_key = var.ssh_private_key
-    }
-    source      = "./edge_env.sh"
-    destination = "~/edge_env.sh"
-  }
+  
   provisioner "file" {
     connection {
       agent       = false
