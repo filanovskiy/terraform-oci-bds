@@ -30,7 +30,7 @@ resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
 resource "oci_apigateway_gateway" "test_gateway" {
   #Required
   compartment_id = local.compartment_ocid
-  endpoint_type  = "Oracle Function"
+  endpoint_type  = "PUBLIC"
   subnet_id      = module.vcn.subnet_ids
 
   #Optional
