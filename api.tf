@@ -39,7 +39,7 @@ resource "oci_apigateway_gateway" "bds-demo-gateway" {
 }
 
 
-resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
+/* resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
     #Required
     compartment_id = local.compartment_ocid
     gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
@@ -55,11 +55,51 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
              authentication {
             function_id = oci_functions_function.bds-demo-function.id
              }
-            methods = ["GET"]
+            
         }
     }
 
     #Optional
     display_name = "bds-demo-deployment-tf"
     freeform_tags = { "environment" = "bds-demo" }
+} */
+
+
+resource "oci_apigateway_deployment" "test_deployment" {
+  #Required
+    compartment_id = local.compartment_ocid
+    gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
+    path_prefix = "/v1"
+
+  specification {
+    
+    request_policies {
+      cors {
+        #Required
+        allowed_origins = "["*"]"
+      }
+
+      rate_limiting {
+        #Required
+        rate_in_requests_per_second = "10"
+        rate_key                    = "CLIENT_IP"
+      }
+    }
+
+    routes {
+      #Required
+      backend {
+        #Required
+        type = "HTTP_BACKEND"
+        url  = "https://api.weather.gov"
+      }
+
+      path = "/hello"
+      methods = ["GET"]
+    }
+  }
+
+  #Optional
+  display_name  = "bds-demo-api-gw"
+  freeform_tags = { "environment" = "bds-demo" }
 }
