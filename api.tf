@@ -65,7 +65,7 @@ resource "oci_apigateway_gateway" "bds-demo-gateway" {
 } */
 
 
-resource "oci_apigateway_deployment" "test_deployment" {
+resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
   #Required
     compartment_id = local.compartment_ocid
     gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
