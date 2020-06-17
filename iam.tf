@@ -43,7 +43,6 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
 }
 
 resource "oci_identity_dynamic_group" "bds-demo-dg" {
-  depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
     #Required
     compartment_id = local.compartment_ocid
     description = "$dynamic group for API gateway"

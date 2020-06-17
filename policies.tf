@@ -1,4 +1,5 @@
 resource "oci_identity_policy" allow_bds_read_oci_resources {
+  depends_on = [oci_identity_dynamic_group.bds-demo-dg]
   #Required
   provider       = oci.home
   compartment_id = local.compartment_ocid
