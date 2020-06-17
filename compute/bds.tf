@@ -11,7 +11,7 @@ resource oci_bds_bds_instance demo-bds {
   // V2VsY29tZTEhCg== // Welcome1! - doesn't
   // cluster_admin_password = "V2VsY29tZTEhCg=="
   // cluster_admin_password = "SW5pdDAxMTgwOTEjCg=="
-  cluster_public_key     = var.ssh_public_key
+  cluster_public_key = var.ssh_public_key
 
   display_name = var.bds_cluster_name
 
@@ -52,17 +52,17 @@ resource oci_bds_bds_instance demo-bds {
 
 
 resource "null_resource" "remote-exec" {
-  depends_on          = [oci_bds_bds_instance.demo-bds]
+  depends_on = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
-      connection {
-      agent       = false
-      timeout     = "30m"
+    connection {
+      agent   = false
+      timeout = "30m"
       //host = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
-      host = oci_core_public_ip.cm_public_ip.ip_address
+      host        = oci_core_public_ip.cm_public_ip.ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
-  
+
     inline = [
       "sudo service docker start",
       "sudo systemctl enable docker",
@@ -71,8 +71,8 @@ resource "null_resource" "remote-exec" {
       "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin"
     ]
   }
-  }
- 
+}
+
 /*
 resource "oci_core_private_ip" "test_private_ip" {
   depends_on          = [oci_bds_bds_instance.demo-bds]
@@ -100,21 +100,21 @@ data "oci_core_vnic" "CMVnic" {
 } */
 
 data "oci_core_private_ips" "test_private_ips_by_ip_address" {
-    #Optional
-    ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
-    subnet_id = var.subnet_ocid
+  #Optional
+  ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+  subnet_id  = var.subnet_ocid
 }
 
 resource "oci_core_public_ip" "cm_public_ip" {
-  depends_on          = [oci_bds_bds_instance.demo-bds]
-    #Required
-    compartment_id = var.compartment_ocid
-    lifetime = "EPHEMERAL"
+  depends_on = [oci_bds_bds_instance.demo-bds]
+  #Required
+  compartment_id = var.compartment_ocid
+  lifetime       = "EPHEMERAL"
 
-    #Optional
-    display_name = "BDS Demo Cloudera Manager IP"
-      freeform_tags = {
+  #Optional
+  display_name = "BDS Demo Cloudera Manager IP"
+  freeform_tags = {
     "environment" = "bds-demo"
   }
-    private_ip_id = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
+  private_ip_id = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
 }

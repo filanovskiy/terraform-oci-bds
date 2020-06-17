@@ -13,18 +13,16 @@ resource oci_core_instance bds-demo-egde {
     hostname_label         = "bds-demo-egde"
     nsg_ids                = []
     skip_source_dest_check = "false"
-    subnet_id = var.subnet_ocid
+    subnet_id              = var.subnet_ocid
   }
-
-  display_name = "bds-demo-egde"
+  count        = 2
+  display_name = "${format("bds-demo-egde", count.index + 1)}" 
   launch_options {
     boot_volume_type                    = "PARAVIRTUALIZED"
     firmware                            = "UEFI_64"
     is_consistent_volume_naming_enabled = "true"
-    //is_pv_encryption_in_transit_enabled = "true"
-    //is_pv_encryption_in_transit_enabled = "false"
-    network_type                        = "VFIO"
-    remote_data_volume_type             = "PARAVIRTUALIZED"
+    network_type            = "VFIO"
+    remote_data_volume_type = "PARAVIRTUALIZED"
   }
 
   metadata = {
