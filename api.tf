@@ -13,7 +13,7 @@ resource "oci_functions_function" "bds-demo-function" {
   #Required
   application_id = oci_functions_application.bds-demo-app.id
   display_name   = "bds-demo-function"
-  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:0.0.3"
+  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:latest"
   memory_in_mbs  = "128"
 
   #Optional
@@ -34,35 +34,9 @@ resource "oci_apigateway_gateway" "bds-demo-gateway" {
   subnet_id      = module.vcn.subnet_ids
 
   #Optional
-  display_name  = "bds-demo-api-gw-test2"
+  display_name  = "bds-demo-api-gw"
   freeform_tags = { "environment" = "bds-demo" }
 }
-
-
-/* resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
-    #Required
-    compartment_id = local.compartment_ocid
-    gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
-    path_prefix = "/v1"
-    specification {
-        routes {
-            #Required
-            backend {
-                #Required
-                type = "FUNCTION_BACKEND"
-            }
-            path = "/hello-tf"
-             authentication {
-            function_id = oci_functions_function.bds-demo-function.id
-             }
-            
-        }
-    }
-
-    #Optional
-    display_name = "bds-demo-deployment-tf"
-    freeform_tags = { "environment" = "bds-demo" }
-} */
 
 
 resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
