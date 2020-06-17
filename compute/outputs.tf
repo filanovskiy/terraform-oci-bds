@@ -1,7 +1,7 @@
 data oci_core_vnic_attachments edge_node_vnics {
   compartment_id      = var.compartment_ocid
   availability_domain = data.oci_identity_availability_domain.US-ASHBURN-AD-1.name
-  instance_id         = oci_core_instance.bds-demo-egde.id
+  instance_id         = oci_core_instance.bds-demo-egde.id[count.index]
 }
 
 data oci_core_subnet customer_subnet {
