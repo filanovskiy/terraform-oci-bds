@@ -16,7 +16,7 @@ resource oci_core_instance bds-demo-egde {
     subnet_id              = var.subnet_ocid
   }
   count        = 2
-  display_name = format("bds-demo-egde", count.index + 1)
+  display_name = "bds-demo-egde${count.index}"
   launch_options {
     boot_volume_type                    = "PARAVIRTUALIZED"
     firmware                            = "UEFI_64"
