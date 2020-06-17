@@ -90,7 +90,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
         type = "HTTP_BACKEND"
         url  = "https://api.weather.gov"
       }
-      path = "/hello"
+      path = "/api"
       methods = ["GET"]
     }
   }
@@ -127,7 +127,6 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
         type = "ORACLE_FUNCTIONS_BACKEND"
         function_id  = oci_functions_function.bds-demo-function.id
       }
-
       path = "/hello"
       methods = ["GET"]
     }
