@@ -2,7 +2,7 @@ resource "oci_functions_application" "bds-demo-app" {
     #Required
     compartment_id = local.compartment_ocid
     display_name = "bds-demo-application"
-    subnet_ids = tolist(module.vcn.subnet_ids).[0]
+    subnet_ids = tolist(module.vcn.subnet_ids)
 
     #Optional
     // config = "${var.application_config}"
