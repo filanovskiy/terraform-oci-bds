@@ -44,7 +44,7 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
 
 resource "oci_identity_dynamic_group" "bds-demo-dg" {
     #Required
-    compartment_id = local.compartment_ocid
+    compartment_id = var.tenancy_ocid
     description = "$dynamic group for API gateway"
     matching_rule = "ALL { request.principal.type= 'ApiGateway' , request.resource.compartment.id = [${local.compartment_ocid}]}"
     name = "api-gw-dg"
