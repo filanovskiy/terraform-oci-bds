@@ -21,9 +21,9 @@ resource "oci_functions_function" "bds-demo-function" {
     timeout_in_seconds = "60"
 }
 
-resource "oci_functions_invoke_function" "bds-demo-function" {
+resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
     #Required
-    function_id = oci_functions_function.test_function.id
+    function_id = oci_functions_function.bds-demo-function.id
 }
 
 resource "oci_apigateway_gateway" "test_gateway" {
