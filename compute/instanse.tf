@@ -9,8 +9,8 @@ resource oci_core_instance bds-demo-egde {
   compartment_id = var.compartment_ocid
   create_vnic_details {
     assign_public_ip       = "true"
-    display_name           = "bds-demo-egde"
-    hostname_label         = "bds-demo-egde"
+    display_name           = "bds-demo-egde${count.index}"
+    hostname_label         = "bds-demo-egde${count.index}"
     nsg_ids                = []
     skip_source_dest_check = "false"
     subnet_id              = var.subnet_ocid
