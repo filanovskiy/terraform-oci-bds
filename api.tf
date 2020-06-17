@@ -21,11 +21,11 @@ resource "oci_functions_function" "bds-demo-function" {
   timeout_in_seconds = "60"
 }
 
-resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
+/* resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
     depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
   #Required
   function_id = oci_functions_function.bds-demo-function.id
-}
+} */
 
 /* resource "oci_apigateway_gateway" "test_gateway" {
   #Required
