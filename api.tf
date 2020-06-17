@@ -49,11 +49,11 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment" {
             #Required
             backend {
                 #Required
-                type = "Oracle Function"
+                type = "FUNCTION_BACKEND"
             }
             path = "/hello-tf"
             function_id = oci_functions_function.bds-demo-function.id
-            methods = "GET"
+            methods = ["GET"]
         }
     }
 
