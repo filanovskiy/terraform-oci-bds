@@ -15,7 +15,7 @@ resource oci_core_instance bds-demo-egde {
     skip_source_dest_check = "false"
     subnet_id              = var.subnet_ocid
   }
-  count        = 1
+  count        = 2
   display_name = "bds-demo-egde${count.index}"
   launch_options {
     boot_volume_type                    = "PARAVIRTUALIZED"
