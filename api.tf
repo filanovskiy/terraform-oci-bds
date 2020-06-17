@@ -76,7 +76,7 @@ resource "oci_apigateway_deployment" "test_deployment" {
     request_policies {
       cors {
         #Required
-        allowed_origins = "["*"]"
+        allowed_origins = ["*"]
       }
 
       rate_limiting {
