@@ -15,7 +15,7 @@ resource "oci_identity_policy" allow_bds_read_oci_resources {
     "allow group ${oci_identity_group.bds_admin_grp.name} to manage functions-family in compartment ${data.oci_identity_compartment.runtime_compartment.name}",
     "allow group ${oci_identity_group.bds_admin_grp.name} to read metrics in compartment ${data.oci_identity_compartment.runtime_compartment.name}",
     "allow group ${oci_identity_group.bds_admin_grp.name} to read objectstorage-namespaces in compartment ${data.oci_identity_compartment.runtime_compartment.name}",
-    "allow dynamic-group api-gw-dg to use functions-family in compartment [your compartment name] ${data.oci_identity_compartment.runtime_compartment.name}",
+    "allow dynamic-group api-gw-dg to use functions-family in compartment ${data.oci_identity_compartment.runtime_compartment.name}",
  //   "allow group ${oci_identity_group.bds_admin_grp.name} to use cloud-shell in tenancy",
   ]
   freeform_tags = {
