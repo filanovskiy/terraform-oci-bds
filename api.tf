@@ -13,7 +13,7 @@ resource "oci_functions_function" "bds-demo-function" {
     #Required
     application_id = oci_functions_application.bds-demo-app.id
     display_name = "bds-demo-function"
-    image = "iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest"
+    image = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:latest"
     memory_in_mbs = "128"
 
     #Optional
@@ -29,7 +29,7 @@ resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
 resource "oci_apigateway_gateway" "test_gateway" {
     #Required
     compartment_id = local.compartment_ocid
-    endpoint_type = "none"
+    endpoint_type = "Oracle Function"
     subnet_id = module.vcn.subnet_ids
 
     #Optional
