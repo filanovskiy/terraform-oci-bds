@@ -42,8 +42,15 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
   }
 }
 
-output "compartment_OCID" {
-  value = oci_identity_compartment.bds-demo-compartment.id
+resource "oci_identity_dynamic_group" "bds-demo-dg" {
+  depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
+    #Required
+    compartment_id = var.tenancy_ocid
+    description = "$dynamic group for API gateway"
+    matching_rule = "ALL { request.principal.type= 'ApiGateway' , request.resource.compartment.id = [${local.compartment_ocid}]}"
+    name = "api-gw-dg"
+    #Optional
+    freeform_tags = {"environment" = "bds-demo"}
 }
 
 resource "oci_identity_ui_password" "user_ui_password" {
