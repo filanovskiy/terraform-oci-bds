@@ -25,3 +25,14 @@ resource "oci_functions_invoke_function" "bds-demo-function" {
     #Required
     function_id = oci_functions_function.test_function.id
 }
+
+resource "oci_apigateway_gateway" "test_gateway" {
+    #Required
+    compartment_id = local.compartment_ocid
+    endpoint_type = "none"
+    subnet_ids = module.vcn.subnet_ids
+
+    #Optional
+    display_name = "bds-demo-api-gw"
+    freeform_tags = {"environment" = "bds-demo"}
+}
