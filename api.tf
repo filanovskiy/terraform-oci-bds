@@ -69,7 +69,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
   #Required
     compartment_id = local.compartment_ocid
     gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
-    path_prefix = "/v1"
+    path_prefix = "/http"
 
   specification {
     request_policies {
@@ -103,7 +103,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
   #Required
     compartment_id = local.compartment_ocid
     gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
-    path_prefix = "/v1"
+    path_prefix = "/fn"
 
   specification {
     
@@ -127,7 +127,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
         type = "ORACLE_FUNCTIONS_BACKEND"
         function_id  = oci_functions_function.bds-demo-function.id
       }
-      path = "/hello"
+      path = "/api"
       methods = ["GET"]
     }
   }
