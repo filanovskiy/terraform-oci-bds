@@ -1,4 +1,3 @@
-
 resource "oci_identity_group" "bds_admin_grp" {
   provider       = oci.home
   name           = "bds_admin_grp"
