@@ -10,9 +10,9 @@ resource "oci_identity_policy" allow_bds_read_oci_resources {
     "allow group ${oci_identity_group.bds_admin_grp.name} to manage virtual-network-family in compartment ${data.oci_identity_compartment.runtime_compartment.name}",
     "allow group ${oci_identity_group.bds_admin_grp.name} to manage repos in tenancy",
  //   "allow group ${oci_identity_group.bds_admin_grp.name} to use virtual-network-family in tenancy",
-    "allow group ${oci_identity_group.bds_admin_grp.name} to manage functions-family in tenancy",
-    "allow group ${oci_identity_group.bds_admin_grp.name} to read metrics in tenancy",
-    "allow group ${oci_identity_group.bds_admin_grp.name} to read objectstorage-namespaces in tenancy",
+    //"allow group ${oci_identity_group.bds_admin_grp.name} to manage functions-family in tenancy",
+    //"allow group ${oci_identity_group.bds_admin_grp.name} to read metrics in tenancy",
+    //"allow group ${oci_identity_group.bds_admin_grp.name} to read objectstorage-namespaces in tenancy",
  //   "allow group ${oci_identity_group.bds_admin_grp.name} to use cloud-shell in tenancy",
   ]
   freeform_tags = {
