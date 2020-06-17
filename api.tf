@@ -26,7 +26,7 @@ resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
   function_id = oci_functions_function.bds-demo-function.id
 }
 
-resource "oci_apigateway_gateway" "test_gateway" {
+/* resource "oci_apigateway_gateway" "test_gateway" {
   #Required
   compartment_id = local.compartment_ocid
   endpoint_type  = "Oracle Function"
@@ -35,4 +35,4 @@ resource "oci_apigateway_gateway" "test_gateway" {
   #Optional
   display_name  = "bds-demo-api-gw"
   freeform_tags = { "environment" = "bds-demo" }
-}
+} */
