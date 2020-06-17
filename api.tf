@@ -34,7 +34,7 @@ resource "oci_apigateway_gateway" "bds-demo-gateway" {
   subnet_id      = module.vcn.subnet_ids
 
   #Optional
-  display_name  = "bds-demo-api-gw"
+  display_name  = "bds-demo-api-gw-test2"
   freeform_tags = { "environment" = "bds-demo" }
 }
 
