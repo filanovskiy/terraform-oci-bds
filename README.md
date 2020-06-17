@@ -16,6 +16,8 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 	- DHCP
 - Public IP (and assign it to Cloudera Manager host)
 - Pull zeppelin image on the Cloudera Manager host
+- Create Application and "Hello World" function
+- Create API gateway
 
 In order to provision it, user have to follow steps:
 
