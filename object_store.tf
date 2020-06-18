@@ -27,6 +27,6 @@ resource "oci_objectstorage_preauthrequest" "bds_preauthenticated_request" {
   time_expires = "2022-08-25T21:10:29.600Z"
 }
 
-output par {
+/* output par {
   value = oci_objectstorage_preauthrequest.bds_preauthenticated_request
-} 
+}  */
