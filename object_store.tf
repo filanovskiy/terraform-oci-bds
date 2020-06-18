@@ -1,13 +1,13 @@
 data "oci_objectstorage_namespace" "bds-demo-namespace" {
 
     #Optional
-    compartment_id = locals.compartment_id
+    compartment_id = locals.compartment_ocid
 }
 
 
 resource "oci_objectstorage_bucket" "tpcds-text-bc" {
     #Required
-    compartment_id = locals.compartment_id
+    compartment_id = locals.compartment_ocid
     name = "tpcds_text"
     namespace = oci_objectstorage_namespace.bds-demo-namespace
 
