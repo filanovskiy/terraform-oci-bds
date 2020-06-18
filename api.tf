@@ -13,7 +13,7 @@ resource "oci_functions_function" "bds-demo-function" {
   #Required
   application_id = oci_functions_application.bds-demo-app.id
   display_name   = "bds-demo-function"
-  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:latest"
+  image          = "iad.ocir.io/oraclebigdatadb/alexey/hello-java:0.0.3"
   memory_in_mbs  = "128"
 
   #Optional
