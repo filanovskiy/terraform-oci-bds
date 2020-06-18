@@ -9,7 +9,7 @@ resource "oci_objectstorage_bucket" "tpcds-text-bc" {
     #Required
     compartment_id = local.compartment_ocid
     name = "tpcds_text"
-    namespace = oci_objectstorage_namespace.bds-demo-namespace
+    namespace = oci_objectstorage_namespace.bds-demo-namespace.id
 
     #Optional 
     freeform_tags = { "environment" = "bds-demo" }
