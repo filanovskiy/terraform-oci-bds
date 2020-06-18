@@ -22,7 +22,7 @@ resource "oci_functions_function" "bds-demo-function" {
 }
 
 resource "oci_functions_invoke_function" "bds-demo-function-invoke" {
-    depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
+  depends_on = [oci_identity_policy.allow_bds_read_oci_resources]
   #Required
   function_id = oci_functions_function.bds-demo-function.id
 }
@@ -41,9 +41,9 @@ resource "oci_apigateway_gateway" "bds-demo-gateway" {
 
 resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
   #Required
-    compartment_id = local.compartment_ocid
-    gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
-    path_prefix = "/http"
+  compartment_id = local.compartment_ocid
+  gateway_id     = oci_apigateway_gateway.bds-demo-gateway.id
+  path_prefix    = "/http"
 
   specification {
     request_policies {
@@ -64,7 +64,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
         type = "HTTP_BACKEND"
         url  = "https://api.weather.gov"
       }
-      path = "/api"
+      path    = "/api"
       methods = ["GET"]
     }
   }
@@ -75,12 +75,12 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-http" {
 
 resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
   #Required
-    compartment_id = local.compartment_ocid
-    gateway_id = oci_apigateway_gateway.bds-demo-gateway.id
-    path_prefix = "/fn"
+  compartment_id = local.compartment_ocid
+  gateway_id     = oci_apigateway_gateway.bds-demo-gateway.id
+  path_prefix    = "/fn"
 
   specification {
-    
+
     request_policies {
       cors {
         #Required
@@ -98,10 +98,10 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
       #Required
       backend {
         #Required
-        type = "ORACLE_FUNCTIONS_BACKEND"
-        function_id  = oci_functions_function.bds-demo-function.id
+        type        = "ORACLE_FUNCTIONS_BACKEND"
+        function_id = oci_functions_function.bds-demo-function.id
       }
-      path = "/api"
+      path    = "/api"
       methods = ["GET"]
     }
   }
