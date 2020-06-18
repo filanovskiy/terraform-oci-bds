@@ -30,15 +30,15 @@ output "compartment_OCID" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
 
-resource "local_file" "edge_env" {
+resource "local_file" "bootstrap" {
   content = join("", ["#!/bin/bash \n",
     "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri} \n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com \n",
-    " sudo yum install -y dstat python36-oci-cli docker-engine\n",
+    " sudo yum install -y dstat python36-oci-cli docker-engine \n",
     "sudo service docker start\n",
     "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
     "sudo docker run -v /tmp/tpcds:/tmp/tpcds iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
-    "for i in `find /tmp/tpcds/text/ -name " * "|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done\n",
+    "for i in `find /tmp/tpcds/text/ -name " * "|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     ]
   )
   filename = "userdata/bootstrap.sh"
