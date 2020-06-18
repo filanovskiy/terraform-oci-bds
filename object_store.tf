@@ -4,8 +4,10 @@ data "oci_objectstorage_namespace" "bds-demo-namespace" {
     compartment_id = local.compartment_ocid
 }
 
-
-resource "oci_objectstorage_bucket" "tpcds-text-bc" {
+output "ns"{
+    value=data.oci_objectstorage_namespace.bds-demo-namespace
+}
+/* resource "oci_objectstorage_bucket" "tpcds-text-bc" {
     #Required
     compartment_id = local.compartment_ocid
     name = "tpcds_text"
@@ -24,13 +26,6 @@ resource "oci_objectstorage_preauthrequest" "bds_preauthenticated_request" {
     time_expires = "2022-08-25T21:10:29.600Z"
 }
 
-/* data "oci_objectstorage_preauthrequest" "test_preauthenticated_request" {
-    #Required
-    bucket = "${var.preauthenticated_request_bucket}"
-    namespace = "${var.preauthenticated_request_namespace}"
-    par_id = "${oci_objectstorage_preauthrequest.test_par.id}"
-}
- */
  output par{
      value = oci_objectstorage_preauthrequest.bds_preauthenticated_request
- }
+ } */
