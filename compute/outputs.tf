@@ -33,7 +33,7 @@ resource "local_file" "edge_env" {
     "export ETC_HOSTS=$EDGE_IP $EDGE_FQDN $EDGE_HOSTNAME",
     ]
   )
-  filename = "edge_env.sh"
+  filename = "userdata/edge_env.sh"
 }
 
 output "cm_public_ip" {
