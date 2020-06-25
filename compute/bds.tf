@@ -38,7 +38,7 @@ resource oci_bds_bds_instance demo-bds {
 
   worker_node {
     block_volume_size_in_gbs = "500"
-    number_of_nodes          = "18"
+    number_of_nodes          = "3"
     shape                    = "VM.Standard2.4"
     subnet_id                = var.subnet_ocid
   }

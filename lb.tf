@@ -54,9 +54,9 @@ resource "oci_load_balancer_certificate" "lb-cert1" {
 
 resource "oci_load_balancer_hostname" "test_hostname1" {
   #Required
-  hostname         = "app.example.com"
+  hostname         = "bds-demo.example.com"
   load_balancer_id = oci_load_balancer.lb1.id
-  name             = "hostname1"
+  name             = "hostname"
 }
 
 /* resource "oci_load_balancer_hostname" "test_hostname2" {
