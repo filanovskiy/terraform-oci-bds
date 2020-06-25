@@ -49,14 +49,14 @@ resource "local_file" "bootstrap" {
     "sudo service docker start\n",
     "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
     "sudo docker pull msoap/shell2http\n",
-    //"sudo docker run -p 8080:8080 --rm -d msoap/shell2http -export-all-vars -add-exit -shell=\"bash\" -include-stderr -show-errors /generate_tpcds_text \"/home/opc/generate_tpcds_data.sh\" \n",
+    //"sudo docker run -p 8080:8080 --rm -d msoap/shell2http -export-all-vars -add-exit -shell=\"bash\" -include-stderr -show-errors /generate_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     //"sudo systemctl start snapd.service\n",
     //"sudo snap install shell2http\n",
     "sudo systemctl stop firewalld\n",
     "wget https://github.com/msoap/shell2http/releases/download/1.13/shell2http-1.13.linux.amd64.tar.gz \n",
     "tar -zxf shell2http-1.13.linux.amd64.tar.gz\n",
     "sudo mv ~/shell2http /usr/bin/\n",
-    "nohup sudo shell2http -host=\"0.0.0.0\" -export-all-vars -add-exit /gen_tpcds_text "/home/opc/generate_tpcds_data.sh"  &> shell2http.out &\n",
+    "nohup sudo shell2http -host=\"0.0.0.0\" -export-all-vars -add-exit /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     ]
   )
   filename = "userdata/bootstrap.sh"
