@@ -96,11 +96,3 @@ resource oci_core_instance bds-demo-egde {
     ]
   }
 }
-
-data "oci_core_vnic" "edge_node_vnic" {
-  vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
-}
-
-output "public-ip" {
-  value = data.oci_core_vnic.edge_node_vnic.public_ip_address
-}

@@ -4,10 +4,19 @@ data oci_core_vnic_attachments edge_node_vnics {
   instance_id         = oci_core_instance.bds-demo-egde[0].id
 }
 
+
+data "oci_core_vnic" "edge_node_vnic" {
+  count        = 2
+  vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
+}
+
+output "public-ip" {
+  value = data.oci_core_vnic.edge_node_vnic.public_ip_address
+}
+
 data oci_core_subnet customer_subnet {
   subnet_id = var.subnet_ocid
 }
-
 resource "local_file" "edge_env" {
   content = join("", ["export CLUSTER=${oci_bds_bds_instance.demo-bds.display_name} \n",
     "export MN0_HOSTNAME=${oci_bds_bds_instance.demo-bds.nodes[0].display_name} \n",
