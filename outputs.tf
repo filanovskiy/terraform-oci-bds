@@ -30,6 +30,10 @@ output "compartment_OCID" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
 
+output "lb_public_ip" {
+  value = [oci_load_balancer.lb1.ip_address_details.ip_address]
+}
+
 resource "local_file" "generate_tpcds_data" {
   content = join("", ["#!/bin/bash \n",
     "export DATA_DIR=/tmp/snap.docker/tmp/tpcds/text\n",
