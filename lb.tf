@@ -66,7 +66,7 @@ resource "oci_load_balancer_hostname" "test_hostname2" {
   name             = "hostname2"
 }
 
-resource "oci_load_balancer_listener" "lb-listener1" {
+/* resource "oci_load_balancer_listener" "lb-listener1" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
   name                     = "http"
   default_backend_set_name = "${oci_load_balancer_backend_set.lb-bes1.name}"
@@ -91,7 +91,7 @@ resource "oci_load_balancer_listener" "lb-listener2" {
     certificate_name        = "${oci_load_balancer_certificate.lb-cert1.certificate_name}"
     verify_peer_certificate = false
   }
-}
+} */
 
 resource "oci_load_balancer_listener" "lb-listener3" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
