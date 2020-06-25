@@ -47,7 +47,7 @@ resource "local_file" "bootstrap" {
     "sudo service docker start\n",
     "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
     "sudo docker pull msoap/shell2http\n",
-    "sudo docker run -p 8080:8080 --rm -d msoap/shell2http /generate_tpcds_text /home/opc/generate_tpcds_data\n",
+    "sudo docker run -p 8080:8080 --rm -d msoap/shell2http /generate_tpcds_text /home/opc/generate_tpcds_data.sh\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
