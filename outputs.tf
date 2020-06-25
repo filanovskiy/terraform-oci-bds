@@ -36,7 +36,7 @@ output "lb_public_ip" {
 
 resource "local_file" "generate_tpcds_data" {
   content = join("", ["#!/bin/bash \n",
-    "export DATA_DIR=/tmp/snap.docker/tmp/tpcds/text\n",
+    "export DATA_DIR=/tmp/tpcds/text/\n",
     "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri} \n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com \n",
     "sudo docker run -v /tmp/tpcds:/tmp/tpcds iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
