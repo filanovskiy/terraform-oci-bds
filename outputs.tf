@@ -31,7 +31,7 @@ output "compartment_OCID" {
 }
 
 output "lb_public_ip" {
-  value = oci_load_balancer.lb1.ip_address_details
+  value = oci_load_balancer.lb1.ip_address_details.ip_address
 }
 
 resource "local_file" "generate_tpcds_data" {
