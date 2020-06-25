@@ -6,11 +6,12 @@ data oci_core_vnic_attachments edge_node_vnics {
 
 
 data "oci_core_vnic" "edge_node_vnic" {
-  count        = 2
+  count  = 2
   vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
 }
 
 output "public-ip" {
+  count  = 2
   value = data.oci_core_vnic.edge_node_vnic.public_ip_address
 }
 
