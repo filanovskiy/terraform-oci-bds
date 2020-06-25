@@ -12,7 +12,7 @@ data "oci_core_vnic" "edge_node_vnic" {
 
 output "public-ip" {
   count  = 2
-  value = data.oci_core_vnic.edge_node_vnic.public_ip_address
+  value = data.oci_core_vnic.edge_node_vnic[count.index].public_ip_address
 }
 
 data oci_core_subnet customer_subnet {
