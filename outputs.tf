@@ -55,7 +55,7 @@ resource "local_file" "bootstrap" {
     "sudo systemctl stop firewalld\n",
     "wget https://github.com/msoap/shell2http/releases/download/1.13/shell2http-1.13.linux.amd64.tar.gz \n",
     "tar -zxf shell2http-1.13.linux.amd64.tar.gz\n",
-    "sudo mv ~/shell2http /usr/bin/\n",
+    "sudo mv /home/opc/shell2http /usr/bin/\n",
     "nohup sudo shell2http -host=\"0.0.0.0\" -export-all-vars -add-exit /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     ]
   )
