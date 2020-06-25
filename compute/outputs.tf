@@ -9,7 +9,7 @@ data oci_core_subnet customer_subnet {
 }
 
 data "oci_core_vnic" "edge_node_vnic" {
-  vnic_id = "${lookup([data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments], "vnic_id")}"
+  vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
 }
 
 output "public-ip" {
