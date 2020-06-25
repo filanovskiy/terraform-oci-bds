@@ -1,3 +1,6 @@
+# API Gateway Blogpost
+# https://blogs.oracle.com/developers/creating-your-first-api-gateway-in-the-oracle-cloud
+
 resource "oci_functions_application" "bds-demo-app" {
   #Required
   compartment_id = local.compartment_ocid
