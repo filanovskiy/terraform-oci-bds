@@ -59,13 +59,13 @@ resource "oci_load_balancer_hostname" "test_hostname1" {
   name             = "hostname1"
 }
 
-resource "oci_load_balancer_hostname" "test_hostname2" {
+/* resource "oci_load_balancer_hostname" "test_hostname2" {
   #Required
   hostname         = "app2.example.com"
   load_balancer_id = oci_load_balancer.lb1.id
   name             = "hostname2"
 }
-
+ */
 /* resource "oci_load_balancer_listener" "lb-listener1" {
   load_balancer_id         = "${oci_load_balancer.lb1.id}"
   name                     = "http"
