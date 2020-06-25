@@ -18,3 +18,6 @@ variable vm_image_id {
 }
 variable bds_cluster_name {
 }
+locals {
+  number_edge_nodes = 2
+}

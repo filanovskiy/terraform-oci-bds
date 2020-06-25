@@ -6,7 +6,7 @@ data oci_core_vnic_attachments edge_node_vnics {
 
 
 data "oci_core_vnic" "edge_node_vnic" {
-  count  = 2
+  count  = local.number_edge_nodes
   vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
 }
 
