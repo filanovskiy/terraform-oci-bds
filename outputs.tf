@@ -30,7 +30,7 @@ output "compartment_OCID" {
   value = oci_identity_compartment.bds-demo-compartment.id
 }
 
-resource "local_file" "bootstrap" {
+resource "local_file" "generate_tpcds_data" {
   content = join("", ["#!/bin/bash \n",
     "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri} \n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com \n",
@@ -41,5 +41,5 @@ resource "local_file" "bootstrap" {
     "for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     ]
   )
-  filename = "userdata/bootstrap.sh"
+  filename = "userdata/generate_tpcds_data.sh"
 }
