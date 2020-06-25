@@ -1,13 +1,14 @@
 data oci_core_vnic_attachments edge_node_vnics {
+  count  = local.number_edge_nodes
   compartment_id      = var.compartment_ocid
   availability_domain = data.oci_identity_availability_domain.US-ASHBURN-AD-1.name
-  instance_id         = oci_core_instance.bds-demo-egde[0].id
+  instance_id         = oci_core_instance.bds-demo-egde[count.index].id
 }
 
 
 data "oci_core_vnic" "edge_node_vnic" {
-  count  = local.number_edge_nodes
-  vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[count.index], "vnic_id")}"
+  
+  vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics.vnic_attachments[0], "vnic_id")}"
 }
 
 output "public-ip" {
