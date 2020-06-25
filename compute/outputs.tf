@@ -5,10 +5,9 @@ data oci_core_vnic_attachments edge_node_vnics {
   instance_id         = oci_core_instance.bds-demo-egde[count.index].id
 }
 
-output "edge_node_vnics" {
+/* output "edge_node_vnics" {
   value = data.oci_core_vnic.edge_node_vnic[*]
-}
-
+} */
 
 data "oci_core_vnic" "edge_node_vnic" {
   count  = local.number_edge_nodes
