@@ -90,7 +90,7 @@ resource oci_core_instance bds-demo-egde {
     }
     inline = [
       "chmod +x ~/generate_tpcds_data.sh",
-      "sudo ~/generate_tpcds_data.sh",
+      # "sudo ~/generate_tpcds_data.sh",
       "sudo docker pull msoap/shell2http",
       "sudo docker run -p 8080:8080 --rm -d msoap/shell2http /generate_tpcds_text /home/opc/generate_tpcds_data",
     ]
