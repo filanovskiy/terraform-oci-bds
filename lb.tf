@@ -180,3 +180,11 @@ resource "oci_load_balancer_backend" "lb-be2" {
   load_balancer_id = "${oci_load_balancer.lb1.id}"
   name             = "example_rule_set_name"
 } */
+
+output  "lb-host1"{
+  value =module.compute.public-ip[0]
+}
+
+output  "lb-host2"{
+  value =module.compute.public-ip[1]
+}
