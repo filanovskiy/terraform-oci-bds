@@ -85,7 +85,7 @@ resource "oci_load_balancer_listener" "lb-listener2" {
   name                     = "ssh"
   default_backend_set_name = oci_load_balancer_backend_set.lb-bes1.name
   port                     = 22
-  protocol                 = "TCP"
+  protocol                 = "HTTP"
 
   ssl_configuration {
     certificate_name        = oci_load_balancer_certificate.lb-cert1.certificate_name
