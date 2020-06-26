@@ -62,7 +62,7 @@ resource "local_file" "bootstrap" {
     "sudo mv /home/opc/shell2http /usr/bin/\n",
     "sudo touch /home/opc/shell2http.out\n",
     "sudo chown opc:opc /home/opc/shell2http.out\n",
-    "nohup sudo shell2http -host=\"0.0.0.0\" -export-all-vars -add-exit -include-stderr -show-errors  /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
+    "nohup sudo shell2http -host=\"0.0.0.0\" -export-all-vars -add-exit /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     ]
   )
   filename = "userdata/bootstrap.sh"
