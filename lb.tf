@@ -110,7 +110,7 @@ resource "oci_load_balancer_listener" "lb-listener3" {
 resource "oci_load_balancer_backend" "lb-be1" {
   load_balancer_id = oci_load_balancer.lb1.id
   backendset_name  = oci_load_balancer_backend_set.lb-bes1.name
-  ip_address       = module.compute.public-ip[0]
+  ip_address       = module.compute.private-ip[0]
   port             = 8080
   backup           = false
   drain            = false
@@ -121,7 +121,7 @@ resource "oci_load_balancer_backend" "lb-be1" {
 resource "oci_load_balancer_backend" "lb-be2" {
   load_balancer_id = oci_load_balancer.lb1.id
   backendset_name  = oci_load_balancer_backend_set.lb-bes1.name
-  ip_address       = module.compute.public-ip[1]
+  ip_address       = module.compute.private-ip[1]
   port             = 8080
   backup           = false
   drain            = false
