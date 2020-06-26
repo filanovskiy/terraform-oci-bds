@@ -104,7 +104,7 @@ resource "oci_apigateway_deployment" "bds-demo-gw-deployment-fn" {
         type        = "ORACLE_FUNCTIONS_BACKEND"
         function_id = oci_functions_function.bds-demo-function.id
       }
-      //path    = ""
+      path    = "/"
       methods = ["GET"]
     }
   }
