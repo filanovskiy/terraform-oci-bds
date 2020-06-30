@@ -79,7 +79,7 @@ resource "oci_load_balancer_hostname" "test_hostname1" {
     idle_timeout_in_seconds = "2"
   }
 }
-
+*/
 
 resource "oci_load_balancer_listener" "lb-listener2" {
   load_balancer_id         = oci_load_balancer.lb1.id
@@ -93,7 +93,7 @@ resource "oci_load_balancer_listener" "lb-listener2" {
     verify_peer_certificate = false
   } 
 }
-*/
+
 
 resource "oci_load_balancer_listener" "lb-listener3" {
   load_balancer_id         = oci_load_balancer.lb1.id
