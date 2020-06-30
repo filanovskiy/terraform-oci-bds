@@ -16,10 +16,10 @@ resource "oci_load_balancer_backend_set" "lb-bes1" {
   policy           = "ROUND_ROBIN"
 
   health_checker {
-    port                = "8080"
-    protocol            = "HTTP"
-    response_body_regex = ".*"
-    url_path            = "/"
+    port                = "22"
+    protocol            = "TCP"
+    //response_body_regex = ".*"
+    //url_path            = "/"
   }
 }
 
