@@ -88,10 +88,10 @@ resource "oci_load_balancer_listener" "lb-listener2" {
   port                     = 22
   protocol                 = "TCP"
 
-  /ssl_configuration {
+  /* ssl_configuration {
     certificate_name        = oci_load_balancer_certificate.lb-cert1.certificate_name
     verify_peer_certificate = false
-  } 
+  } */ 
 }
 
 
