@@ -79,7 +79,7 @@ resource "oci_load_balancer_hostname" "test_hostname1" {
     idle_timeout_in_seconds = "2"
   }
 }
-*/
+
 
 resource "oci_load_balancer_listener" "lb-listener2" {
   load_balancer_id         = oci_load_balancer.lb1.id
@@ -87,13 +87,8 @@ resource "oci_load_balancer_listener" "lb-listener2" {
   default_backend_set_name = oci_load_balancer_backend_set.lb-bes1.name
   port                     = 22
   protocol                 = "TCP"
-
-  /* ssl_configuration {
-    certificate_name        = oci_load_balancer_certificate.lb-cert1.certificate_name
-    verify_peer_certificate = false
-  } */ 
 }
-
+*/
 
 resource "oci_load_balancer_listener" "lb-listener3" {
   load_balancer_id         = oci_load_balancer.lb1.id
