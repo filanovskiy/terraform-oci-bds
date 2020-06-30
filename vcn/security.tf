@@ -274,6 +274,24 @@ ingress_security_rules {
     stateless   = "false"
 
     tcp_options {
+      max = "30000"
+      min = "30000"
+
+    }
+
+    #udp_options = <<Optional value not found in discovery>>
+  }
+
+  ingress_security_rules {
+    #description = <<Optional value not found in discovery>>
+    #icmp_options = <<Optional value not found in discovery>>
+    protocol = "6"
+
+    source      = "0.0.0.0/0"
+    source_type = "CIDR_BLOCK"
+    stateless   = "false"
+
+    tcp_options {
       max = "8088"
       min = "8088"
 
