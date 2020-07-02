@@ -23,8 +23,8 @@ data oci_core_subnet customer_subnet {
 }
 resource "local_file" "edge_env" {
   content = join("", ["#!/bin/bash \n",
-    "export CLUSTER=${oci_bds_bds_instance.demo-bds.display_name} \n",
-    "export MN0_HOSTNAME=${oci_bds_bds_instance.demo-bds.nodes[0].display_name} \n",
+    "export CLUSTER=\" ${oci_bds_bds_instance.demo-bds.display_name}\"\n",
+    "export MN0_HOSTNAME=\" ${oci_bds_bds_instance.demo-bds.nodes[0].display_name}\" \n",
     "export MN0_IP=${oci_bds_bds_instance.demo-bds.nodes[0].ip_address} \n",
     "export CM_IP=${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)} \n",
     "export CM_ADMIN_USER=admin \n",
