@@ -49,6 +49,7 @@ resource "local_file" "generate_tpcds_data" {
 
 resource "local_file" "bootstrap" {
   content = join("", ["#!/bin/bash \n",
+    "sudo chmod 400 /home/opc/.ssh/bdsKey\n",
     "sudo yum install -y dstat python36-oci-cli docker-engine snapd.x86_64 \n",
     "sudo service docker start\n",
     "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
