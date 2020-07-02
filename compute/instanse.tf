@@ -77,7 +77,7 @@ provisioner "file" {
       user        = "opc"
       private_key = var.ssh_private_key
     }
-    source      = "./userdata/edge_env.sh"
+    source      = "./userdata/env.sh"
     destination = "~/env.sh"
   }
   provisioner "file" {
