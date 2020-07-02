@@ -78,7 +78,29 @@ provisioner "file" {
       private_key = var.ssh_private_key
     }
     source      = "./userdata/edge_env.sh"
-    destination = "~/edge_env.sh"
+    destination = "~/env.sh"
+  }
+  provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
+      host        = self.public_ip
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/setup-edge.sh"
+    destination = "~/setup-edge.sh"
+  }
+  provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
+      host        = self.public_ip
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/add-to-cm.sh"
+    destination = "~/add-to-cm.sh"
   }
   provisioner "file" {
     connection {
