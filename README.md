@@ -18,6 +18,8 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 - Pull zeppelin image on the Cloudera Manager host
 - Create Application and "Hello World" function
 - Create API gateway
+- Create Load Balancer infront of EDGE nodes
+- Create Data Catalog Instance
 
 In order to provision it, user have to follow steps:
 
