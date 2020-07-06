@@ -45,5 +45,6 @@ output "cm_public_ip" {
 }
 
 output "cm_instance_ocid" {
-  value = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
+  //value = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
+  value=oci_bds_bds_instance.demo-bds
 }
