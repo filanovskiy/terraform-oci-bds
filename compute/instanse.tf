@@ -125,6 +125,8 @@ provisioner "file" {
     inline = [
       "chmod +x ~/generate_tpcds_data.sh",
       "chmod +x ~/bootstrap.sh",
+      "sudo chmod +x ~/setup-edge.sh",
+      "sudo chmod +x ~/add-to-cm.sh",
       "sudo ~/bootstrap.sh",
     ]
   }
