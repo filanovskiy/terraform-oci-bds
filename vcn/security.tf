@@ -338,5 +338,25 @@ ingress_security_rules {
 
     #udp_options = <<Optional value not found in discovery>>
   }
+
+  ingress_security_rules {
+    description = "Open all intersubnet ports"
+
+    #icmp_options = <<Optional value not found in discovery>>
+    protocol    = "6"
+    source      = "10.200.0.0/17"
+    source_type = "CIDR_BLOCK"
+    stateless   = "false"
+
+    tcp_options {
+      max = "65535"
+      min = "1"
+
+      #source_port_range = <<Optional value not found in discovery>>
+    }
+
+    #udp_options = <<Optional value not found in discovery>>
+  }
+
   manage_default_resource_id = oci_core_vcn.bds-demo-vcn.default_security_list_id
 }
