@@ -14,12 +14,14 @@ resource oci_bds_bds_instance demo-bds {
   }
 
   is_cloud_sql_configured = "false"
-  is_high_availability    = "true"
-  is_secure               = "true"
+  //is_high_availability    = "true"
+  //is_secure               = "true"
+  is_high_availability    = "false"
+  is_secure               = "false"
 
   master_node {
     block_volume_size_in_gbs = "500"
-    number_of_nodes          = "2"
+    number_of_nodes          = "1"
     shape                    = "VM.Standard2.4"
     subnet_id                = var.subnet_ocid
   }
@@ -31,15 +33,15 @@ resource oci_bds_bds_instance demo-bds {
 
   util_node {
     block_volume_size_in_gbs = "500"
-    number_of_nodes          = "2"
+    number_of_nodes          = "1"
     shape                    = "VM.Standard2.4"
     subnet_id                = var.subnet_ocid
   }
 
   worker_node {
     block_volume_size_in_gbs = "500"
-    number_of_nodes          = "4"
-    shape                    = "VM.Standard2.4"
+    number_of_nodes          = "3"
+    shape                    = "VM.Standard2.1"
     subnet_id                = var.subnet_ocid
   }
 }
