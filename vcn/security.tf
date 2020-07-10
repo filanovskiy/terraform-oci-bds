@@ -343,7 +343,7 @@ ingress_security_rules {
     description = "Open all intersubnet ports"
 
     #icmp_options = <<Optional value not found in discovery>>
-    protocol    = "6"
+    //protocol    = "6"
     source      = "10.200.0.0/17"
     source_type = "CIDR_BLOCK"
     stateless   = "false"
