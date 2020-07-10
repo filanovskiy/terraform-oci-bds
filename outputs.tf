@@ -67,7 +67,7 @@ resource "local_file" "bootstrap" {
     "sudo chown opc:opc /home/opc/shell2http.out\n",
     "sleep 3\n",
     "nohup sudo shell2http -export-all-vars -add-exit /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
-    "sudo /home/opc/setup-edge.sh\n",
+    "/home/opc/setup-edge.sh\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
