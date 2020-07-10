@@ -344,17 +344,17 @@ ingress_security_rules {
 
     #icmp_options = <<Optional value not found in discovery>>
     //protocol    = "ALL"
-    protocol    = "6"
+    protocol    = all
     source      = "10.200.0.0/17"
     source_type = "CIDR_BLOCK"
     stateless   = "false"
 
-    tcp_options {
-      max = "65535"
-      min = "1"
+    //tcp_options {
+//      max = "65535"
+  //    min = "1"
 
       #source_port_range = <<Optional value not found in discovery>>
-    }
+    //}
 
     #udp_options = <<Optional value not found in discovery>>
   }
