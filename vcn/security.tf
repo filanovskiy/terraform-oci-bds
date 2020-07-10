@@ -348,7 +348,7 @@ ingress_security_rules {
     source_type = "CIDR_BLOCK"
     stateless   = "false"
 
-    tcp_options {
+    udp_options {
       max = "65535"
       min = "1"
 
