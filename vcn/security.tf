@@ -344,7 +344,7 @@ ingress_security_rules {
 
     #icmp_options = <<Optional value not found in discovery>>
     //protocol    = "ALL"
-    protocol    = all
+    protocol    = "all"
     source      = "10.200.0.0/17"
     source_type = "CIDR_BLOCK"
     stateless   = "false"
