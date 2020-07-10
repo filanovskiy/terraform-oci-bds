@@ -348,12 +348,12 @@ ingress_security_rules {
     source_type = "CIDR_BLOCK"
     stateless   = "false"
 
-    udp_options {
+    //udp_options {
       max = "65535"
       min = "1"
 
       #source_port_range = <<Optional value not found in discovery>>
-    }
+    //}
 
     #udp_options = <<Optional value not found in discovery>>
   }
