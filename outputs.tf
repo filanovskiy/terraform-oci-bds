@@ -39,7 +39,7 @@ resource "local_file" "generate_tpcds_data" {
     "export DATA_DIR=/tmp/tpcds/text/\n",
     "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri} \n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com \n",
-    "sudo docker run -v /tmp/tpcds:/tmp/tpcds iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
+    "sudo docker run -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR$i $END_POINT$ACCESS_URI$i ; done\n",
     ]

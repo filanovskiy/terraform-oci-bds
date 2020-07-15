@@ -129,6 +129,7 @@ provisioner "file" {
       "chmod +x ~/add-to-cm.sh",
       "chmod +x ~/env.sh",
       "/home/opc/bootstrap.sh",
+      "cat env.sh >> .bash_profile",
       //"/home/opc/env.sh",
       //"/home/opc/setup-edge.sh",
     ]
