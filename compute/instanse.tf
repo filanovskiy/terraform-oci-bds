@@ -129,8 +129,8 @@ provisioner "file" {
       "chmod +x ~/add-to-cm.sh",
       "chmod +x ~/env.sh",
       "/home/opc/bootstrap.sh",
-      "/home/opc/env.sh",
-      //"sudo /home/opc/setup-edge.sh",
+      //"/home/opc/env.sh",
+      //"/home/opc/setup-edge.sh",
     ]
   }
 }
