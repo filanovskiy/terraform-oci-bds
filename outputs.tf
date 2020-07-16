@@ -36,16 +36,17 @@ output "lb_public_ip" {
 
 resource "local_file" "generate_tpcds_data" {
   content = join("", ["#!/bin/bash \n",
-    "export DATA_DIR=/tmp/tpcds/text/\n",
+    "export DATA_DIR=/tmp/tpcds/text\n",
     "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri}\n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com\n",
-    "sudo -u hdfs hadoop fs -mkdir -p /tmp/tpcds/text\n",
+    "sudo -u hdfs hadoop fs -mkdir -p $DATA_DIR\n",
     "sudo -u hdfs hadoop fs -mkdir -p /user/opc\n",
-    "sudo -u hdfs hadoop fs -chmod -R 777 /tmp/tpcds/text\n",
+    "sudo -u hdfs hadoop fs -chmod -R 777 $DATA_DIR\n",
     "sudo -u hdfs hadoop fs -chmod -R 777 /user/opc\n",
     "sudo docker run --network=host -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
-    "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do hadoop fs -put $DATA_DIR$i $DATA_DIR$i; done\n",
+    //"for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do hadoop fs -put $DATA_DIR$i $DATA_DIR$i; done\n",
+    "sudo hadoop fs -get $DATA_DIR $DATA_DIR\n",
     "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR$i $END_POINT$ACCESS_URI$i ; done\n",
     ]
   )
