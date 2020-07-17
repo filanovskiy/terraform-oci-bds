@@ -47,7 +47,7 @@ resource "local_file" "generate_tpcds_data" {
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     //"for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do hadoop fs -put $DATA_DIR$i $DATA_DIR$i; done\n",
     "sudo hadoop fs -get $DATA_DIR $DATA_DIR\n",
-    "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR$i $END_POINT$ACCESS_URI$i ; done\n",
+    "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR/$i $END_POINT$ACCESS_URI$i ; done\n",
     ]
   )
   filename = "userdata/generate_tpcds_data.sh"
@@ -72,7 +72,8 @@ resource "local_file" "bootstrap" {
     "sudo touch /home/opc/shell2http.out\n",
     "sudo chown opc:opc /home/opc/shell2http.out\n",
     "sleep 3\n",
-    "nohup sudo shell2http -export-all-vars -add-exit /gen_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
+    "ssh -i .ssh/bdsKey $CM_IP chmod +x /home/opc/generate_tpcds_data.sh\n",
+    "nohup sudo shell2http -export-all-vars -add-exit /gen_tpcds_text \"ssh -i .ssh/bdsKey $CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     "/home/opc/setup-edge.sh\n",
     "/home/opc/setup-edge.sh\n",
     ]
