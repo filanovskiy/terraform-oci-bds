@@ -72,8 +72,8 @@ resource "local_file" "bootstrap" {
     "sudo touch /home/opc/shell2http.out\n",
     "sudo chown opc:opc /home/opc/shell2http.out\n",
     "sleep 3\n",
-    "ssh -i .ssh/bdsKey $CM_IP chmod +x /home/opc/generate_tpcds_data.sh\n",
-    "nohup sudo shell2http -export-all-vars -add-exit /gen_tpcds_text \"ssh -i .ssh/bdsKey $CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
+    "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $CM_IP chmod +x /home/opc/generate_tpcds_data.sh\n",
+    "nohup sudo shell2http -export-all-vars -add-exit /gen_tpcds_text \"ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     "/home/opc/setup-edge.sh\n",
     "/home/opc/setup-edge.sh\n",
     ]
