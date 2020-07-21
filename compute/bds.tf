@@ -92,6 +92,7 @@ resource "null_resource" "remote-exec-mn" {
       "dcli -f opc.keytab -d opc.keytab",
     ]
   }
+}
 
 
 data "oci_core_private_ips" "test_private_ips_by_ip_address" {
