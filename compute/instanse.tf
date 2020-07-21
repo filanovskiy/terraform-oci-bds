@@ -142,7 +142,7 @@ provisioner "file" {
       "chmod +x ~/env.sh",
       "/home/opc/bootstrap.sh",
       "cat env.sh >> .bash_profile",
-      "scp -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab",
+      //"scp -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab",
       //"/home/opc/env.sh",
       //"/home/opc/setup-edge.sh",
     ]
