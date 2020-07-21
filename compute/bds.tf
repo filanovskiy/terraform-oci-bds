@@ -95,9 +95,15 @@ resource "null_resource" "remote-exec-mn" {
 }
 
 
-data "oci_core_private_ips" "test_private_ips_by_ip_address" {
+data "oci_core_private_ips" "cm_private_ips_by_ip_address" {
   #Optional
   ip_address = substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)
+  subnet_id  = var.subnet_ocid
+}
+
+data "oci_core_private_ips" "mn_private_ips_by_ip_address" {
+  #Optional
+  ip_address = oci_bds_bds_instance.demo-bds.nodes[0].ip_address
   subnet_id  = var.subnet_ocid
 }
 
@@ -112,7 +118,7 @@ resource "oci_core_public_ip" "cm_public_ip" {
   freeform_tags = {
     "environment" = "bds-demo"
   }
-  private_ip_id = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
+  private_ip_id = data.oci_core_private_ips.cm_private_ips_by_ip_address.private_ips[0].id
 }
 
 resource "oci_core_public_ip" "mn_public_ip" {
@@ -122,9 +128,9 @@ resource "oci_core_public_ip" "mn_public_ip" {
   lifetime       = "EPHEMERAL"
 
   #Optional
-  display_name = "BDS Demo Cloudera Manager IP"
+  display_name = "BDS Demo Master Node IP"
   freeform_tags = {
     "environment" = "bds-demo"
   }
-  private_ip_id = oci_bds_bds_instance.demo-bds.nodes[0].ip_address.id
+  private_ip_id = data.oci_core_private_ips.mn_private_ips_by_ip_address.private_ips[0].id
 }
