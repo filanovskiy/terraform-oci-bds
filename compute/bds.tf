@@ -81,7 +81,7 @@ resource "null_resource" "remote-exec-mn" {
     connection {
       agent   = false
       timeout = "30m"
-      host        = oci_bds_bds_instance.demo-bds.nodes[0].ip_address
+      host        = oci_core_public_ip.mn_public_ip.ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
@@ -113,4 +113,18 @@ resource "oci_core_public_ip" "cm_public_ip" {
     "environment" = "bds-demo"
   }
   private_ip_id = data.oci_core_private_ips.test_private_ips_by_ip_address.private_ips[0].id
+}
+
+resource "oci_core_public_ip" "mn_public_ip" {
+  depends_on = [oci_bds_bds_instance.demo-bds]
+  #Required
+  compartment_id = var.compartment_ocid
+  lifetime       = "EPHEMERAL"
+
+  #Optional
+  display_name = "BDS Demo Cloudera Manager IP"
+  freeform_tags = {
+    "environment" = "bds-demo"
+  }
+  private_ip_id = oci_bds_bds_instance.demo-bds.nodes[0].ip_address.id
 }
