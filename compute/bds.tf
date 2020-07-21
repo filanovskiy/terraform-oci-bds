@@ -49,7 +49,7 @@ resource oci_bds_bds_instance demo-bds {
 }
 
 // Bootstrap run on Utility Node
-resource "null_resource" "remote-exec" {
+resource "null_resource" "remote-exec-un" {
   depends_on = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
     connection {
@@ -75,7 +75,7 @@ resource "null_resource" "remote-exec" {
 
 
 // Bootstrap run on Master Node
-resource "null_resource" "remote-exec" {
+resource "null_resource" "remote-exec-mn" {
   depends_on = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
     connection {
