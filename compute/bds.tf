@@ -55,7 +55,7 @@ resource "null_resource" "remote-exec" {
     connection {
       agent   = false
       timeout = "30m"
-      host        = oci_bds_bds_instance.demo-bds.nodes[0].ip_address
+      host        = oci_core_public_ip.cm_public_ip.ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
@@ -81,7 +81,7 @@ resource "null_resource" "remote-exec" {
     connection {
       agent   = false
       timeout = "30m"
-      host        = oci_core_public_ip.cm_public_ip.ip_address
+      host        = oci_bds_bds_instance.demo-bds.nodes[0].ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
