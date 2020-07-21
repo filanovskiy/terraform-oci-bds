@@ -48,14 +48,14 @@ resource oci_bds_bds_instance demo-bds {
   }
 }
 
-
+// Bootstrap run on Utility Node
 resource "null_resource" "remote-exec" {
   depends_on = [oci_bds_bds_instance.demo-bds]
   provisioner "remote-exec" {
     connection {
       agent   = false
       timeout = "30m"
-      host        = oci_core_public_ip.cm_public_ip.ip_address
+      host        = oci_bds_bds_instance.demo-bds.nodes[0].ip_address
       user        = "opc"
       private_key = var.ssh_private_key
     }
@@ -72,6 +72,27 @@ resource "null_resource" "remote-exec" {
     ]
   }
 }
+
+
+// Bootstrap run on Master Node
+resource "null_resource" "remote-exec" {
+  depends_on = [oci_bds_bds_instance.demo-bds]
+  provisioner "remote-exec" {
+    connection {
+      agent   = false
+      timeout = "30m"
+      host        = oci_core_public_ip.cm_public_ip.ip_address
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    inline = [
+      "sudo kadmin.local -q \"add_principal -pw ${base64decode(var.bds_instance_cluster_admin_password)} opc\"",
+      "sudo kadmin.local -q \"xst -norandkey -k opc.keytab opc\"",
+      "sudo chown opc:opc opc.keytab",
+      "dcli -f opc.keytab -d opc.keytab",
+    ]
+  }
+
 
 data "oci_core_private_ips" "test_private_ips_by_ip_address" {
   #Optional
