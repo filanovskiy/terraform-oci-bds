@@ -89,9 +89,9 @@ resource "null_resource" "remote-exec-mn" {
     }
     inline = [
       "sudo kadmin.local -q \"add_principal -pw ${base64decode(var.bds_instance_cluster_admin_password)} opc\"",
-      "sudo kadmin.local -q \"xst -norandkey -k opc.keytab opc\"",
-      "sudo chown opc:opc opc.keytab",
-      "dcli -f opc.keytab -d opc.keytab",
+      "sudo kadmin.local -q \"xst -norandkey -k /home/opc/opc.keytab opc\"",
+      "sudo chown opc:opc /home/opc/opc.keytab",
+      "dcli -f /home/opc/opc.keytab -d /home/opc/opc.keytab",
       "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
       "crontab mycron",
     ]
