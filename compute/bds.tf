@@ -90,6 +90,8 @@ resource "null_resource" "remote-exec-mn" {
       "sudo kadmin.local -q \"xst -norandkey -k opc.keytab opc\"",
       "sudo chown opc:opc opc.keytab",
       "dcli -f opc.keytab -d opc.keytab",
+      "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
+      "crontab mycron",
     ]
   }
 }
