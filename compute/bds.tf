@@ -69,7 +69,7 @@ resource "null_resource" "remote-exec-un" {
       "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
       "sudo docker tag iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest spark-tpcds-gen:latest",
       "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
-      "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
+      "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
       "crontab mycron",
     ]
   }
@@ -92,12 +92,12 @@ resource "null_resource" "remote-exec-mn" {
       "sudo kadmin.local -q \"xst -norandkey -k /home/opc/opc.keytab opc\"",
       "sudo chown opc:opc /home/opc/opc.keytab",
       "dcli -f /home/opc/opc.keytab -d /home/opc/opc.keytab",
-      "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
+      "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
       "crontab mycron",
+      "dcli chown opc:opc /home/opc/opc.keytab",
     ]
   }
 }
-
 
 data "oci_core_private_ips" "cm_private_ips_by_ip_address" {
   #Optional

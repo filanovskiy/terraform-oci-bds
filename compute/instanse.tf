@@ -143,7 +143,7 @@ provisioner "file" {
       "/home/opc/bootstrap.sh",
       "cat env.sh >> .bash_profile",
       //"scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab",
-      "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
+      "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
       "crontab mycron",
       //"/home/opc/env.sh",
       //"/home/opc/setup-edge.sh",

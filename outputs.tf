@@ -44,6 +44,8 @@ resource "local_file" "generate_tpcds_data" {
     "sudo hadoop fs -mkdir -p /user/opc\n",
     "sudo hadoop fs -chmod -R 777 $DATA_DIR\n",
     "sudo hadoop fs -chmod -R 777 /user/opc\n",
+    "sudo hive -e \"DROP DATABASE IF EXISTS tpcds_csv\"",
+    "sudo hive -e \"CREATE DATABASE IF NOT EXISTS tpcds_csv\"",
     "sudo docker run -it --network=host -v /home/opc/opc.keytab:/home/opc/opc.keytab  -v /etc/krb5.conf:/etc/krb5.conf -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"sudo docker run --network=host -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
