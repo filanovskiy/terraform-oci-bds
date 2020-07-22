@@ -68,7 +68,9 @@ resource "null_resource" "remote-exec-un" {
       "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest",
       "sudo docker tag iad.ocir.io/oraclebigdatadb/zeppelin-notebook-bds/zeppelin:latest zeppelin:latest",
       "sudo docker tag iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest spark-tpcds-gen:latest",
-      "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin"
+      "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
+      "echo \"* * * * * kinit -kt opc.keytab opc\" >> mycron",
+      "crontab mycron",
     ]
   }
 }
