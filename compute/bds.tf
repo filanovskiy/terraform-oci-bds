@@ -70,6 +70,7 @@ resource "null_resource" "remote-exec-un" {
       "sudo docker tag iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest spark-tpcds-gen:latest",
       "sudo docker run --cpus=4 --memory=12g  -d --network=host --rm -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark zeppelin",
       "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
+      "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
       "crontab mycron",
     ]
   }
