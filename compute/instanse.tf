@@ -46,7 +46,7 @@ resource oci_core_instance bds-demo-egde {
   }
 
 
-provisioner "file" {
+/* provisioner "file" {
     connection {
       agent       = false
       timeout     = "1m"
@@ -137,7 +137,19 @@ provisioner "file" {
     }
     source      = var.ssh_keys_prefix
     destination = "~/.ssh/bdsKey"
-  }
+  } */
+
+provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
+      host        = self.public_ip
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/"
+    destination = "~"
+  } 
 
   provisioner "remote-exec" {
     connection {

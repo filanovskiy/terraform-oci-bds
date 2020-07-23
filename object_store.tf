@@ -27,7 +27,7 @@ resource "oci_objectstorage_preauthrequest" "bds_preauth_tpcds" {
 resource "oci_objectstorage_bucket" "bikes" {
   #Required
   compartment_id = local.compartment_ocid
-  name           = "bikes"
+  name           = "bikes_data"
   namespace      = data.oci_objectstorage_namespace.bds-demo-namespace.namespace
 
   #Optional 
