@@ -37,7 +37,7 @@ output "lb_public_ip" {
 resource "local_file" "generate_tpcds_data" {
   content = join("", ["#!/bin/bash \n",
     "export DATA_DIR=/tmp/tpcds/text\n",
-    "export ACCESS_URI=${oci_objectstorage_preauthrequest.bds_preauthenticated_request.access_uri}\n",
+    "export ACCESS_URI_TPCDS=${oci_objectstorage_preauthrequest.bds_preauth_tpcds.access_uri}\n",
     "export END_POINT=https://objectstorage.us-ashburn-1.oraclecloud.com\n",
     "sudo kinit -kt `sudo find / -name hdfs.keytab|grep hdfs.keytab| sort|tail -1|cut -f 2` hdfs/`hostname`\n",
     "sudo hadoop fs -mkdir -p $DATA_DIR\n",
@@ -51,7 +51,7 @@ resource "local_file" "generate_tpcds_data" {
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     //"for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do hadoop fs -put $DATA_DIR$i $DATA_DIR$i; done\n",
     "sudo hadoop fs -get $DATA_DIR $DATA_DIR\n",
-    "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR/$i $END_POINT$ACCESS_URI$i ; done\n",
+    "for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do  curl -X PUT --data-binary @$DATA_DIR/$i $END_POINT$ACCESS_URI_TPCDS$i ; done\n",
     ]
   )
   filename = "userdata/generate_tpcds_data.sh"

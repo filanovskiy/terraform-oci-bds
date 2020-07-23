@@ -70,6 +70,18 @@ provisioner "file" {
     destination = "~/generate_tpcds_data.sh"
   }
 
+provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
+      host        = oci_core_public_ip.cm_public_ip.ip_address
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/downloadkikes.sh"
+    destination = "~/downloadkikes.sh"
+  }
+
   provisioner "file" {
     connection {
       agent       = false
@@ -81,6 +93,7 @@ provisioner "file" {
     source      = "./userdata/generate_tpcds_data.sh"
     destination = "~/generate_tpcds_data.sh"
   }
+
   provisioner "file" {
     connection {
       agent       = false
