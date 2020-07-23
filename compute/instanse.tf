@@ -143,6 +143,30 @@ provisioner "file" {
     connection {
       agent       = false
       timeout     = "1m"
+      host        = oci_core_public_ip.cm_public_ip.ip_address
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/"
+    destination = "~"
+  } 
+
+  provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
+      host        = oci_core_public_ip.mn_public_ip.ip_address
+      user        = "opc"
+      private_key = var.ssh_private_key
+    }
+    source      = "./userdata/"
+    destination = "~"
+  } 
+
+provisioner "file" {
+    connection {
+      agent       = false
+      timeout     = "1m"
       host        = self.public_ip
       user        = "opc"
       private_key = var.ssh_private_key
