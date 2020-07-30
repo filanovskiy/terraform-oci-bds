@@ -35,7 +35,7 @@ resource "oci_identity_compartment" "bds-demo-compartment" {
   compartment_id = var.tenancy_ocid
   description    = "Compartment automatically created by https://github.com/filanovskiy/terraform-oci-bds to incapsulate all resources needed to show BDS stack"
   name           = var.compartment_name
-  enable_delete = "true"
+  //enable_delete = "true"
 
   #Optional
   freeform_tags = {
