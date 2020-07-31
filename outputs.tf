@@ -46,7 +46,7 @@ resource "local_file" "generate_tpcds_data" {
     "sudo hadoop fs -chmod -R 777 /user/opc\n",
     "sudo hive -e \"DROP DATABASE IF EXISTS tpcds_csv\"\n",
     "sudo hive -e \"CREATE DATABASE IF NOT EXISTS tpcds_csv\"\n",
-    "sudo docker run -it --network=host -v /home/opc/opc.keytab:/home/opc/opc.keytab  -v /etc/krb5.conf:/etc/krb5.conf -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
+    "sudo docker run -it --network=host -v /run:/run -v /home/opc/opc.keytab:/home/opc/opc.keytab  -v /etc/krb5.conf:/etc/krb5.conf -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"sudo docker run --network=host -v /tmp/tpcds:/tmp/tpcds -v /opt/:/opt/ -v /etc/hadoop:/etc/hadoop -v /etc/alternatives:/etc/alternatives -v /etc/hive:/etc/hive -v /etc/spark:/etc/spark iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen\n",
     //"for i in `find /tmp/tpcds/text/|grep -v _SUCCESS|grep -v crc|grep txt`; do  curl -X PUT --data-binary @$i $END_POINT$ACCESS_URI$i ; done",
     //"for i in `sudo find $DATA_DIR|grep -v _SUCCESS|grep -v crc|grep txt|cut -d'/' -f5-`; do hadoop fs -put $DATA_DIR$i $DATA_DIR$i; done\n",
