@@ -32,10 +32,16 @@ clusterhost=$clusterhost". $clusterhost"
 etchosts="$CM_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
-# Add master node to /etc/hosts
+# Add master0 node to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $MN0_IP "hostname | tr -d '[:space:]'"`
 clusterhost=$clusterhost". $clusterhost" 
 etchosts="$MN0_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add master1 node to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $MN1_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$MN1_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Copy the private key for connecting to bastion to the master
