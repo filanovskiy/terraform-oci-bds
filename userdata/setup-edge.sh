@@ -44,16 +44,41 @@ clusterhost=$clusterhost". $clusterhost"
 etchosts="$MN1_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
-# Add utility0 node to /etc/hosts
-clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $UN0_IP "hostname | tr -d '[:space:]'"`
+# Add node0 to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE0_IP "hostname | tr -d '[:space:]'"`
 clusterhost=$clusterhost". $clusterhost" 
-etchosts="$UN0_IP $clusterhost"
+etchosts="$NODE0_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
-# Add utility1 node to /etc/hosts
-clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $UN1_IP "hostname | tr -d '[:space:]'"`
+
+# Add node0 to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE1_IP "hostname | tr -d '[:space:]'"`
 clusterhost=$clusterhost". $clusterhost" 
-etchosts="$UN1_IP $clusterhost"
+etchosts="$NODE1_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add node1 node to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE2_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$NODE2_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add node0 to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE3_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$NODE3_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add node1 node to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE4_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$NODE4_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add node5 to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE5_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$NODE5_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Copy the private key for connecting to bastion to the master
