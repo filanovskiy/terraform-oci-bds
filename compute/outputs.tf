@@ -32,7 +32,6 @@ resource "local_file" "edge_env" {
     "export NODE2_IP=${oci_bds_bds_instance.demo-bds.nodes[4].ip_address} \n",
     "export NODE3_IP=${oci_bds_bds_instance.demo-bds.nodes[5].ip_address} \n",
     "export NODE4_IP=${oci_bds_bds_instance.demo-bds.nodes[6].ip_address} \n",
-    "export NODE5_IP=${oci_bds_bds_instance.demo-bds.nodes[7].ip_address} \n",
     "export CM_IP=${substr(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url, 8, length(oci_bds_bds_instance.demo-bds.cluster_details[0].cloudera_manager_url) - 13)}\n",
     "export CM_ADMIN_USER=admin\n",
     "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)}\n",

@@ -75,12 +75,6 @@ clusterhost=$clusterhost". $clusterhost"
 etchosts="$NODE4_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
-# Add node5 to /etc/hosts
-clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE5_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
-etchosts="$NODE5_IP $clusterhost"
-grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
-
 # Copy the private key for connecting to bastion to the master
 scp $ssh_opt -i $PRIVATE_KEY $PRIVATE_KEY ${MN0_IP}:/home/opc/.ssh/
 
