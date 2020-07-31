@@ -53,11 +53,11 @@ enablegroups=1" | sudo tee /etc/yum.repos.d/bda.repo
 echo "....$(date +"%T") installing base software (kerberos, java)"
 # install software
 sudo yum clean all
-sudo yum install -y krb5-workstation krb5-libs jdk1.8
+sudo yum install -y krb5-workstation krb5-libs # jdk1.8
 
 # Install Java
-# scp -i .ssh/bdsKey $MN0_IP:/opt/oracle/BDAPackages-ol7-5.2.0/Extras/JDK/jdk-8u251-linux-x64.rpm /tmp/
-# sudo rpm -Uhv /tmp/jdk-8u251-linux-x64.rpm 
+scp $ssh_opt -i $PRIVATE_KEY $MN0_IP:/opt/oracle/BDAPackages-ol7-5.2.0/Extras/JDK/jdk-8u251-linux-x64.rpm /tmp/
+sudo rpm -Uhv /tmp/jdk-8u251-linux-x64.rpm 
 
 echo "....$(date +"%T") configuring base software (kerberos, java)"
 # set JAVA_HOME
