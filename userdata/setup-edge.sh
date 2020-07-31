@@ -44,6 +44,18 @@ clusterhost=$clusterhost". $clusterhost"
 etchosts="$MN1_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
+# Add utility0 node to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $UN0_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$UN0_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
+# Add utility1 node to /etc/hosts
+clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $UN1_IP "hostname | tr -d '[:space:]'"`
+clusterhost=$clusterhost". $clusterhost" 
+etchosts="$UN1_IP $clusterhost"
+grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
+
 # Copy the private key for connecting to bastion to the master
 scp $ssh_opt -i $PRIVATE_KEY $PRIVATE_KEY ${MN0_IP}:/home/opc/.ssh/
 
@@ -62,8 +74,8 @@ sudo yum clean all
 sudo yum install -y krb5-workstation krb5-libs # jdk1.8
 
 # Install Java
-scp $ssh_opt -i $PRIVATE_KEY $MN0_IP:/opt/oracle/BDAPackages-ol7-5.2.0/Extras/JDK/jdk-8u251-linux-x64.rpm /tmp/
-sudo rpm -Uhv /tmp/jdk-8u251-linux-x64.rpm 
+scp $ssh_opt -i $PRIVATE_KEY $MN0_IP:/opt/oracle/BDAPackages-ol7-5.2.0/Extras/JDK/jdk-8*.rpm /tmp/
+sudo rpm -Uhv /tmp/jdk-8*.rpm 
 
 echo "....$(date +"%T") configuring base software (kerberos, java)"
 # set JAVA_HOME
