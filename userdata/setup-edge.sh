@@ -28,50 +28,58 @@ echo "....$(date +"%T") update /etc/hosts as workaround for networking issue"
 sudo cp /etc/hosts /etc/hosts.`date +%F-%H-%M-%S`
 
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $CM_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost"
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$CM_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add master0 node to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $MN0_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$MN0_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add master1 node to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $MN1_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$MN1_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add node0 to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE0_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$NODE0_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 
 # Add node0 to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE1_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$NODE1_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add node1 node to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE2_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$NODE2_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add node0 to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE3_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$NODE3_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
 # Add node1 node to /etc/hosts
 clusterhost=`ssh $ssh_opt -i $PRIVATE_KEY $NODE4_IP "hostname | tr -d '[:space:]'"`
-clusterhost=$clusterhost". $clusterhost" 
+# clusterhost=$clusterhost". $clusterhost"
+clusterhost=$clusterhost" $clusterhost".
 etchosts="$NODE4_IP $clusterhost"
 grep -qxF "$etchosts" /etc/hosts || echo $etchosts | sudo tee -a /etc/hosts
 
