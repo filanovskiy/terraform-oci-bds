@@ -83,7 +83,7 @@ resource "local_file" "bootstrap" {
     "/home/opc/setup-edge.sh\n",
     "/home/opc/setup-edge.sh\n",
     "export OCI_CLI_AUTH=instance_principal\n"
-    "DCAT_OCID="$oci_datacatalog_catalog.bds_data_catalog.id,
+    "DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
