@@ -82,7 +82,8 @@ resource "local_file" "bootstrap" {
     "nohup sudo shell2http -export-all-vars -show-errors -include-stderr -add-exit /gen_tpcds_text \"sudo -u opc ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey opc@$CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     "/home/opc/setup-edge.sh\n",
     "/home/opc/setup-edge.sh\n",
-    "export OCI_CLI_AUTH=instance_principal\n",
+    "export OCI_CLI_AUTH=instance_principal\n"
+    "DCAT_OCID="$oci_datacatalog_catalog.bds_data_catalog.id,
     ]
   )
   filename = "userdata/bootstrap.sh"
