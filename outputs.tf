@@ -64,7 +64,7 @@ resource "local_file" "bootstrap" {
     //"sudo chmod +x ~/add-to-cm.sh \n",
     "sudo yum install -y dstat python36-oci-cli docker-engine snapd.x86_64 \n",
     "sudo service docker start\n",
-    "sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
+    #"sudo docker pull iad.ocir.io/oraclebigdatadb/datageneration/spark-tpcds-gen:latest\n",
     "sudo docker pull msoap/shell2http\n",
     //"sudo docker run -p 8080:8080 --rm -d msoap/shell2http -export-all-vars -add-exit -shell=\"bash\" -include-stderr -show-errors /generate_tpcds_text \"/home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     //"sudo systemctl start snapd.service\n",
@@ -81,9 +81,8 @@ resource "local_file" "bootstrap" {
     "scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab\n",
     "nohup sudo shell2http -export-all-vars -show-errors -include-stderr -add-exit /gen_tpcds_text \"sudo -u opc ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey opc@$CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
     "/home/opc/setup-edge.sh\n",
-    "/home/opc/setup-edge.sh\n",
-    "export OCI_CLI_AUTH=instance_principal\n",
-    "DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\n",
+    "echo \"export OCI_CLI_AUTH=instance_principal\" >> .bash_profile\n",
+    "echo \"export DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\" >> .bash_profile\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
