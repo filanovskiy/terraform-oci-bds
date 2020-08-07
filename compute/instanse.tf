@@ -173,7 +173,7 @@ provisioner "file" {
     }
     source      = "./userdata/"
     destination = "~"
-  } 
+  }
 
 provisioner "file" {
     connection {

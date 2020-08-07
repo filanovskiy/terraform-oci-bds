@@ -96,5 +96,5 @@ resource "local_file" "bootstrap" {
 resource "local_file" "dcat_create" {
   content = join("", ["{\"displayName\": \"BDS_DEMO_DATA_ASSET\",\"typeKey\": \"3ea65bc5-f60d-477a-a591-f063665339f9\",\"properties\": {\"default\": {\"url\": \"https://swiftobjectstorage.${var.region}.oraclecloud.com\",\"namespace\": \"${data.oci_objectstorage_namespace.bds-demo-namespace.namespace}\"}}}",
   ])
-  filename = "dcat/tf_create.json"
+  filename = "userdata/dcat/tf_create.json"
 }
