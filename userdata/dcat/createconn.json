@@ -1,1 +1,0 @@
-{"isDefault": "true", "typeKey": "cbb356cc-3b00-43c4-b74c-f9f146fc68a9", "displayName": "obj_st_connection","description": "Test","encProperties": {"default": {}},"properties": {"default": {"ociRegion": "${var.region}","ociCompartment": "${local.compartment_ocid}"}}}

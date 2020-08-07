@@ -96,7 +96,7 @@ resource "local_file" "bootstrap" {
 resource "local_file" "dcat_create_connection" {
   content = join("", ["{\"isDefault\": \"true\", \"typeKey\": \"cbb356cc-3b00-43c4-b74c-f9f146fc68a9\", \"displayName\": \"obj_st_connection\",\"description\": \"Connection to Obj Store\",\"encProperties\": {\"default\": {}},\"properties\": {\"default\": {\"ociRegion\": \"${var.region}\",\"ociCompartment\": \"${local.compartment_ocid}\"}}}",
   ])
-  filename = "userdata/dcat/create)connection.json"
+  filename = "userdata/dcat/create_connection.json"
 }
 
 resource "local_file" "dcat_create_data_asset" {
