@@ -1,0 +1,2 @@
+{"displayName": "BDS_DEMO_DATA_ASSET","typeKey": "3ea65bc5-f60d-477a-a591-f063665339f9","properties": {"default": {"url": "https://swiftobjectstorage.us-ashburn-1.oraclecloud.com","namespace": "${NAMESPACE}"}}}
+{"displayName": "BDS_DEMO_DATA_ASSET","typeKey": "3ea65bc5-f60d-477a-a591-f063665339f9","properties": {"default": {"url": "https://swiftobjectstorage.us-ashburn-1.oraclecloud.com","namespace": "oraclebigdatadb"}}}
