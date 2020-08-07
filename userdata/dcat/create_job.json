@@ -1,1 +1,1 @@
-{"displayName":"Demo_Job","jobType":"HARVEST","connectionKey":"CONNECTION_KEY_VAR","jobDefinitionKey":"JOB_DEF_KEY_VAR","scheduleCronExpression":"@immediate"}
+{"displayName":"Demo_Job","jobType":"HARVEST","connectionKey":"CONNECTION_KEY_VAR","jobDefinitionKey":"JOB_DEF_KEY_VAR","scheduleCronExpression":"@immediate"} 
