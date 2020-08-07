@@ -80,15 +80,24 @@ resource "local_file" "bootstrap" {
     "ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $CM_IP chmod +x /home/opc/generate_tpcds_data.sh\n",
     "scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab\n",
     "nohup sudo shell2http -export-all-vars -show-errors -include-stderr -add-exit /gen_tpcds_text \"sudo -u opc ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey opc@$CM_IP /home/opc/generate_tpcds_data.sh\" &> shell2http.out & \n",
-    "/home/opc/setup-edge.sh\n",
+    #"/home/opc/setup-edge.sh\n",
     "echo \"export OCI_CLI_AUTH=instance_principal\" >> .bash_profile\n",
     "echo \"export DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\" >> .bash_profile\n",
     "echo \"export COMPARTMENT=${local.compartment_ocid}\" >> .bash_profile\n",
-    "echo \"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\" >> .bash_profile\n",
-    "export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\n",
-    "cat createda.json |sed \"s/NAMESPACE/$NAMESPACE/g\"\n",
-    "rm createda.json && mv tmp.json createda.json\n",
+    #"echo \"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\" >> .bash_profile\n",
+    #"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\n",
+    #"cat createda.json |sed \"s/NAMESPACE/$NAMESPACE/g\"\n",
+    #"rm createda.json && mv tmp.json createda.json\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
+}
+
+resource "local_file" "dcat_create" {
+  content = join("", ["
+  {\"displayName\": \"BDS_DEMO_DATA_ASSET\",\"typeKey\": \"3ea65bc5-f60d-477a-a591-f063665339f9\",\"properties\": {\"default\": {\"url\": \"https://swiftobjectstorage.${region}.oraclecloud.com\",\"namespace\": \"${data.oci_objectstorage_namespace.bds-demo-namespace.namespace}\"}}}
+  ",
+    ]
+  )
+  filename = "dcat/tf_create.json"
 }
