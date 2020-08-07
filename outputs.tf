@@ -85,6 +85,9 @@ resource "local_file" "bootstrap" {
     "echo \"export DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\" >> .bash_profile\n",
     "echo \"export COMPARTMENT=${local.compartment_ocid}\" >> .bash_profile\n",
     "echo \"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\" >> .bash_profile\n",
+    "export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\n",
+    "cat createda.json |sed \"s/NAMESPACE/$NAMESPACE/g\"\n",
+    "rm createda.json && mv tmp.json createda.json\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
