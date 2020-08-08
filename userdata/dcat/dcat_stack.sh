@@ -11,4 +11,5 @@ export JOB_DEF_KEY=`oci data-catalog job-definition create --catalog-id $DCAT_OC
 # Create Job
 sed -i "s/JOB_DEF_KEY_VAR/$JOB_DEF_KEY/g" /home/opc/dcat/create_job.json
 sed -i "s/CONNECTION_KEY_VAR/$CONNECTION_KEY/g" /home/opc/dcat/create_job.json
-export JOB_DEF_KEY=`oci data-catalog job create --catalog-id $DCAT_OCID --from-json file:///home/opc/dcat/create_job.json|jq '.data.key'  -c --raw-output`
+export JOB_KEY=`oci data-catalog job create --catalog-id $DCAT_OCID --from-json file:///home/opc/dcat/create_job.json|jq '.data.key'  -c --raw-output`
+oci data-catalog job-execution create --catalog-id $DCAT_OCID --job-key $JOB_KEY
