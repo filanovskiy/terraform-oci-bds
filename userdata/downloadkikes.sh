@@ -2,6 +2,7 @@
 # Download trips data and upload to boject storage
 BUCKET_NAME=${1:-bikes_download}
 
+
 export TARGET_DIR=/tmp/bikes
 export FILE_HOST="https://s3.amazonaws.com/tripdata/"
 export FILE_LIST="
