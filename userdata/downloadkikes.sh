@@ -1,5 +1,6 @@
 #!/bin/bash
 # Download trips data and upload to boject storage
+BUCKET_NAME=${1:-bikes_download}
 
 export TARGET_DIR=/tmp/bikes
 export FILE_HOST="https://s3.amazonaws.com/tripdata/"
@@ -29,5 +30,5 @@ do
    echo "... extracting $file to $TARGET_DIR/csv_tmp"
    unzip -o $TARGET_DIR/$file -d $TARGET_DIR/csv_tmp
 done
-oci os bucket create --name bikes_download --compartment-id $COMPARTMENT
-oci os object bulk-upload --bucket-name bikes_download --src-dir /tmp/bikes/csv_tmp/
+oci os bucket create --name $BUCKET_NAME --compartment-id $COMPARTMENT
+oci os object bulk-upload --bucket-name $BUCKET_NAME --src-dir /tmp/bikes/csv_tmp/
