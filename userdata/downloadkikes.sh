@@ -18,8 +18,8 @@ JC-201910-citibike-tripdata.csv.zip
 JC-201911-citibike-tripdata.csv.zip
 JC-201912-citibike-tripdata.csv.zip"
 
-cd $TARGET_DIR
 mkdir -p $TARGET_DIR/csv_tmp
+cd $TARGET_DIR
 rm $TARGET_DIR/csv_tmp/*
 
 for file in $FILE_LIST 
