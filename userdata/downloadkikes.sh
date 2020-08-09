@@ -29,3 +29,5 @@ do
    echo "... extracting $file to $TARGET_DIR/csv_tmp"
    unzip -o $TARGET_DIR/$file -d $TARGET_DIR/csv_tmp
 done
+oci os bucket create --name bikes_download --compartment-id $COMPARTMENT
+oci os object bulk-upload --bucket-name bikes_download --src-dir /tmp/bikes/csv_tmp/
