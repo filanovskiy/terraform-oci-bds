@@ -9,6 +9,7 @@ sed -i "s/DATA_ASSET_KEY_VAR/$DATA_ASSET_KEY/g" /home/opc/dcat/create_job_defeni
 sed -i "s/CONNECTION_KEY_VAR/$CONNECTION_KEY/g" /home/opc/dcat/create_job_defenition.json
 sed -i "s/BUCKET_VAR/$BUCKET_NAME/g" /home/opc/dcat/create_job_defenition.json
 # Create Job Definition
+sed -i "s/JOB_DEF_VAR/$BUCKET_NAME/g" /home/opc/dcat/create_job_defenition.json
 export JOB_DEF_KEY=`oci data-catalog job-definition create --catalog-id $DCAT_OCID --from-json file:///home/opc/dcat/create_job_defenition.json|jq '.data.key'  -c --raw-output`
 # Create Job
 sed -i "s/JOB_DEF_KEY_VAR/$JOB_DEF_KEY/g" /home/opc/dcat/create_job.json

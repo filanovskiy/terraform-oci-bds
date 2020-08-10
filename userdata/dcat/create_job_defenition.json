@@ -1,1 +1,1 @@
-{"displayName":"TpcdsHarvestJob","description":"Create Job Def","jobType":"HARVEST","dataAssetKey":"DATA_ASSET_KEY_VAR","connectionKey":"CONNECTION_KEY_VAR","properties":{"jobDefinitionScope":{"scope1":{"FolderName":"BUCKET_VAR"}}},"isIncremental":"true"}
+{"displayName":"JOB_DEF_VAR","description":"Create Job Def","jobType":"HARVEST","dataAssetKey":"DATA_ASSET_KEY_VAR","connectionKey":"CONNECTION_KEY_VAR","properties":{"jobDefinitionScope":{"scope1":{"FolderName":"BUCKET_VAR"}}},"isIncremental":"true"}
