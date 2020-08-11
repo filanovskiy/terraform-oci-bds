@@ -1,4 +1,4 @@
-resource "oci_dataintegration_workspace" "test_workspace" {
+resource "oci_dataintegration_workspace" "bds_demo_workspace" {
     #Required
     compartment_id = local.compartment_ocid
     display_name = "bds-demo-dis"

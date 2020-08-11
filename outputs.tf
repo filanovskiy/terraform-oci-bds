@@ -83,6 +83,7 @@ resource "local_file" "bootstrap" {
     "/home/opc/setup-edge.sh\n",
     "echo \"export OCI_CLI_AUTH=instance_principal\" >> .bash_profile\n",
     "echo \"export DCAT_OCID=${oci_datacatalog_catalog.bds_data_catalog.id}\" >> .bash_profile\n",
+    "echo \"export DIS_OCID=${oci_dataintegration_workspace.bds_demo_workspace.id}\" >> .bash_profile\n",
     "echo \"export COMPARTMENT_OCID=${local.compartment_ocid}\" >> .bash_profile\n",
     "sudo chmod +x /home/opc/download*.sh\n",
     "sudo chmod +x /home/opc/dcat/dcat_stack.sh\n",
