@@ -1,0 +1,12 @@
+{
+    "name":"ObjSt",
+    "modelType":"ORACLE_OBJECT_STORAGE_DATA_ASSET",
+    "identifier":"OBJST",
+    "defaultConnection":
+  {     "name":"Default Connection",     "modelType":"ORACLE_OBJECT_STORAGE_CONNECTION",     "identifier":"DEFAULT_CONNECTION"   }
+  ,
+    "url":"https://objectstorage.REGION_VAR.oraclecloud.com",
+    "tenancyId":"TENANCY_VAR",
+    "namespace":"NAMESPACE_VAR"
+  }
+  
