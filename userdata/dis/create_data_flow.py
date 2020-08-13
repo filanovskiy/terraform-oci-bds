@@ -11,15 +11,15 @@ import dis_toolkit
 #   3. map by direct mapping from attribute LNAME to attribute LAST_NAME
 #
 
-srcDataAsset='ecb8eec3-958a-4f8a-8248-4578781312dd'
-srcConnection='b870825d-8a02-41e6-8eea-95efc8ead06e'
-tgtDataAsset='ecb8eec3-958a-4f8a-8248-4578781312dd'
-tgtConnection='b870825d-8a02-41e6-8eea-95efc8ead06e'
+srcDataAsset='DATA_ASSET_VAR'
+srcConnection='CONNECTION_VAR'
+tgtDataAsset='DATA_ASSET_VAR'
+tgtConnection='CONNECTION_VAR'
 
 df={
   "CSV_FILE":{ "dataAsset": srcDataAsset,
     "connection": srcConnection,
-    "schema": 'weather_download',
+    "schema": 'BUCKET_VAR',
     "entity": 'central-park.csv',
     "entityType": "FILE_ENTITY",
     "dataFormat":{"type":"CSV","formatAttribute":{"encoding":"UTF-8","escapeCharacter":"\\","delimiter":",","quoteCharacter":"\"","hasHeader":"true","modelType":"CSV_FORMAT","timestampFormat":"yyyy-MM-dd HH:mm:ss.SSS"}},
@@ -33,7 +33,7 @@ df={
     "from": ["CSV_FILE.OUTPUT1"],
     "dataAsset": tgtDataAsset,
     "connection": tgtConnection,
-    "schema": 'weather_download',
+    "schema": 'BUCKET_VAR',
     "entity": 'central-park-parq/',
     "createNewEntity": 'true',
     "entityType": "FILE_ENTITY",
@@ -51,8 +51,7 @@ signer = oci.auth.signers.InstancePrincipalsSecurityTokenSigner()
 di_client = DataIntegrationClient(config={}, signer=signer)
 df_name = "EXAMPLE_" + str(round(time.time() * 1000))
 
-workspace_id = 'ocid1.disworkspace.oc1.iad.amaaaaaayrywvyyavaybnivcxd5zy2idm52dypccvojanv3b3edezeap7m7q'
+workspace_id = 'DIS_WORKSPACE_VAR'
 folder_id = None
-#folder_id = '015b75ce-651c-4a69-bb0f-f0d9e1ab6167'
 data_flow = dis_toolkit.create_data_flow(di_client, workspace_id, df_name, df_name, folder_id, df)
 print (data_flow.data)
