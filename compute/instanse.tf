@@ -206,8 +206,6 @@ provisioner "file" {
       //"scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i .ssh/bdsKey $MN0_IP:/home/opc/opc.keytab /home/opc/opc.keytab",
       "echo \"* * * * * kinit -kt /home/opc/opc.keytab opc\" >> mycron",
       "crontab mycron",
-      //"/home/opc/env.sh",
-      //"/home/opc/setup-edge.sh",
     ]
   }
 }

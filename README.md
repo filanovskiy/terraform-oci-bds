@@ -1,7 +1,7 @@
 # Big Data Service stack
 This terraform scripts allow to user provision stack of OCI resources needed for Big Data Service, including service itself:
 
-- Edge Node
+- Couple of Edge Nodes
 - Big Data Service
 - BDS admin user/password and group
 - Policies required to provision Big Data Service
@@ -20,6 +20,9 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 - Create API gateway
 - Create Load Balancer infront of EDGE nodes
 - Create Data Catalog Instance
+- Create Data Integration workspace
+- Kerberos principal "opc" and add keytab file on Edge nodes
+- Scripts to download test data sets
 
 In order to provision it, user have to follow steps:
 
@@ -106,3 +109,5 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 11) For login from Edge node to utility node run:
 
 `ssh -i .ssh/bdsKey opc@$CM_IP`
+
+12) In case you want to generate some test datasets, you have to run:
