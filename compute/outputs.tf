@@ -5,10 +5,6 @@ data oci_core_vnic_attachments edge_node_vnics {
   instance_id         = oci_core_instance.bds-demo-egde[count.index].id
 }
 
-/* output "edge_node_vnics" {
-  value = data.oci_core_vnic.edge_node_vnic[*]
-} */
-
 data "oci_core_vnic" "edge_node_vnic" {
   count  = local.number_edge_nodes
   vnic_id = "${lookup(data.oci_core_vnic_attachments.edge_node_vnics[count.index].vnic_attachments[0], "vnic_id")}"
@@ -21,6 +17,10 @@ output "public-ip" {
 data oci_core_subnet customer_subnet {
   subnet_id = var.subnet_ocid
 }
+
+// -----------------------------------------------------------------------------------------
+// Generate a file with enviroment varibles for edge nodes
+// -----------------------------------------------------------------------------------------
 resource "local_file" "edge_env" {
   content = join("", ["#!/bin/bash \n",
     "export CLUSTER=\"${oci_bds_bds_instance.demo-bds.display_name}\"\n",
@@ -45,12 +45,14 @@ resource "local_file" "edge_env" {
   )
   filename = "userdata/env.sh"
 }
+// -----------------------------------------------------------------------------------------
 
+// Cloudera Manager Public IP
 output "cm_public_ip" {
   value = oci_core_public_ip.cm_public_ip.ip_address
 }
 
+// Cloudera Manager instance OCId
 output "cm_instance_ocid" {
   value = oci_bds_bds_instance.demo-bds.nodes[2].instance_id
-  //value=oci_bds_bds_instance.demo-bds
 }
