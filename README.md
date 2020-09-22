@@ -103,6 +103,19 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 - BDS Admin username
 - BDS Admin one time password (you have to change it right after login)
 
+Example
+bds_admin_usr_one_time_password = r}K29&dOPUXK#HZkIp9M 
+cm_instance_ocid = ocid1.instance.oc1.iad.anuwcljrjtu3p6yc6yys3vvdv7w5jwoo53t2jm4vmmtytffd5pyhleb4poca
+cm_public_ip = 132.145.147.5
+compartment_OCID = ocid1.compartment.oc1..aaaaaaa..qfeq
+edge_node_ip = [
+  129.213.133.80,
+  193.122.136.216,
+]
+lb_public_ip = 193.122.133.54
+resource_compartment_name = bds-pm-tf-auto2
+user_name = bds_admin_usr
+
 10) to ssh to edge node, run:
 `ssh -i userdata/demoBDSkey opc@<edge ip address>`
 
