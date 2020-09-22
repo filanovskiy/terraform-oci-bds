@@ -152,4 +152,19 @@ also this dataset copied into Object Store:
 
 ![tpcds_text_os](images/tpcds_text_os.png)
 
-13) 
+13) Alternatively you can download into bucket NYC bike trips and weather information. In order to accomplish this, go to one of the edge node and run:
+
+`[opc@bds-demo-egde0 ~]$ ./downloadbikes.sh`
+
+after command is done, you can check that data been appeared into Object Store bucket:
+
+![bikes_bucket](images/bikes_bucket.png)
+
+Second dataset available for downloading is weather data. In order to upload it just run:
+`[opc@bds-demo-egde0 ~]$ ./downloadweather.sh `
+
+after command is done, you can check that data been appeared into Object Store bucket:
+
+![weather_bucket](images/weather_bucket.png)
+
+14)
