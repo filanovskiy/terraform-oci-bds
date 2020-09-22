@@ -91,6 +91,8 @@ resource "local_file" "bootstrap" {
     "echo \"export OS_NAMESPACE=${data.oci_objectstorage_namespace.bds-demo-namespace.namespace}\" >> .bash_profile\n",
     "sudo chmod +x /home/opc/download*.sh\n",
     "sudo chmod +x /home/opc/dcat/dcat_stack.sh\n",
+    "sudo chmod +x /home/opc/dcat/dcat_harvest.sh\n",
+    "sudo chmod +x /home/opc/dis/create_df_weather.sh \n",
     "/home/opc/setup-edge.sh\n",
     #"echo \"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\" >> .bash_profile\n",
     #"export NAMESPACE=`oci os ns get --raw-output |jq '.data' -c --raw-output`\n",

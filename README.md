@@ -161,10 +161,35 @@ after command is done, you can check that data been appeared into Object Store b
 ![bikes_bucket](images/bikes_bucket.png)
 
 Second dataset available for downloading is weather data. In order to upload it just run:
+
 `[opc@bds-demo-egde0 ~]$ ./downloadweather.sh `
 
 after command is done, you can check that data been appeared into Object Store bucket:
 
 ![weather_bucket](images/weather_bucket.png)
 
-14)
+14) If you want harvest data from one of this bucket into Data Catalog, you will need to create some configuration (register Object Store data Asset and create connection):
+
+`[opc@bds-demo-egde0 ~]$ dcat/dcat_stack.sh `
+
+after one time configuration is done, run harvesting Job against some bucket:
+
+`[opc@bds-demo-egde0 ~]$ dcat/dcat_harvest.sh bikes_download`
+
+You can verify results of the job into OCI Data Catalog console:
+
+![data_entity](images/data_entity.png)
+
+15) If you want to run some transformations with your data (convert from csv format to parquet for example), you may use Data Integration Service. First you need to register Data Asset (Object Store). Simple way to do so is run the script:
+
+`[opc@bds-demo-egde0 ~]$ dis/dis_crete_da.sh `
+
+The next script will create Data Flow for weather data in case you downloaded it in previous step:
+
+`[opc@bds-demo-egde0 dis]$ dis/create_df_weather`
+
+After script done you can check in OCI UI Created Data Flow:
+
+![df1](images/df1.png)
+
+![df2](images/df2.png)
