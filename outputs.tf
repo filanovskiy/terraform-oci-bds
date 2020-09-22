@@ -22,9 +22,9 @@ output "cm_public_ip" {
   value = module.compute.cm_public_ip
 }
 
-output "cm_instance_ocid" {
+/* output "cm_instance_ocid" {
   value = module.compute.cm_instance_ocid
-}
+} */
 
 output "compartment_OCID" {
   value = oci_identity_compartment.bds-demo-compartment.id

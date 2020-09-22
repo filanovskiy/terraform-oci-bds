@@ -98,23 +98,26 @@ Note: you may want to generate ssh key pair. You may simply run this command to 
 `$ terraform apply -auto-approve`
 
 9) After script finished, user will see output, containing:
-- Edge node IP
-- Compartment OCID
-- BDS Admin username
-- BDS Admin one time password (you have to change it right after login)
+<ul>
+<li class="has-line-data" data-line-start="0" data-line-end="1">Edge node IPs</li>
+<li class="has-line-data" data-line-start="1" data-line-end="2">Compartment OCID</li>
+<li class="has-line-data" data-line-start="2" data-line-end="3">BDS Admin username</li>
+<li class="has-line-data" data-line-start="3" data-line-end="4">BDS Admin one time password (you have to change it right after login)</li>
+<li class="has-line-data" data-line-start="4" data-line-end="5">Load balancer (balancing edge nodes) IP</li>
+<li class="has-line-data" data-line-start="5" data-line-end="7">Cloudera Manager Public IP</li>
+</ul>
+Example:
 
-Example
-bds_admin_usr_one_time_password = r}K29&dOPUXK#HZkIp9M 
-cm_instance_ocid = ocid1.instance.oc1.iad.anuwcljrjtu3p6yc6yys3vvdv7w5jwoo53t2jm4vmmtytffd5pyhleb4poca
-cm_public_ip = 132.145.147.5
-compartment_OCID = ocid1.compartment.oc1..aaaaaaa..qfeq
-edge_node_ip = [
-  129.213.133.80,
-  193.122.136.216,
-]
-lb_public_ip = 193.122.133.54
-resource_compartment_name = bds-pm-tf-auto2
-user_name = bds_admin_usr
+<p class="has-line-data" data-line-start="17" data-line-end="28">bds_admin_usr_one_time_password = r}HZkIp9M<br>
+cm_public_ip = 132.145.147.5<br>
+compartment_OCID = ocid1.compartment.oc1…aaaaaaa…qfeq<br>
+edge_node_ip = [<br>
+129.213.133.80,<br>
+193.122.136.216,<br>
+]<br>
+lb_public_ip = 193.122.133.54<br>
+resource_compartment_name = bds-tf-demo<br>
+user_name = bds_admin_usr</p>
 
 10) to ssh to edge node, run:
 `ssh -i userdata/demoBDSkey opc@<edge ip address>`
@@ -123,4 +126,30 @@ user_name = bds_admin_usr
 
 `ssh -i .ssh/bdsKey opc@$CM_IP`
 
-12) In case you want to generate some test datasets, you have to run:
+12) In case you want to generate some test datasets, you have to loging into Cloudera Manager node:
+`ssh -i .ssh/bdsKey opc@$CM_IP`
+after this run the script:
+`[opc@bdsdemoun0 ~]$ /home/opc/generate_tpcds_data.sh `
+
+after script done you can check datasets on HDFS:
+
+<p class="has-line-data" data-line-start="0" data-line-end="7">$  hadoop fs -ls /tmp/tpcds/text<br>
+Found 27 items<br>
+drwxr-xr-x   - opc  supergroup          0 2020-09-22 03:03 /tmp/tpcds/text/call_center<br>
+drwxr-xr-x   - opc  supergroup          0 2020-09-22 03:03 /tmp/tpcds/text/catalog_page<br>
+drwxr-xr-x   - opc  supergroup          0 2020-09-22 03:00 /tmp/tpcds/text/catalog_returns<br>
+…<br>
+drwxr-xr-x   - opc  supergroup          0 2020-09-22 03:03 /tmp/tpcds/text/web_site</p>
+
+Hive:
+<p class="has-line-data" data-line-start="0" data-line-end="5">$ hive -e “show tables” --database tpcds_csv<br>
+…<br>
+customers<br>
+date_dim<br>
+…</p>
+
+also this dataset copied into Object Store:
+
+![tpcds_text_os](images/tpcds_text_os.png)
+
+13) 
