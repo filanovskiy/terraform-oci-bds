@@ -201,4 +201,4 @@ After script done you can check in OCI UI Created Data Flow:
 
 ![df2](images/df2.png)
 
-![df2](images/df2.png)
+![df3](images/df3.png)
