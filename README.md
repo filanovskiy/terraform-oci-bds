@@ -1,10 +1,19 @@
 # Big Data Service stack
 This terraform scripts allow to user provision stack of OCI resources needed for Big Data Service, including service itself:
 
+- Compartment where all resources will be provisioned
 - Couple of Edge Nodes
+	- Add these edge nodes into Cloudera manager and deploy cluster config on it
+	- Kerberos principal "opc" and add keytab file on Edge nodes (password is the same as Cloudera Manager)
+	- Create Load Balancer infront of edge nodes
 - Big Data Service
-- BDS admin user/password and group
-- Policies required to provision Big Data Service
+- BDS admin user/password and group (in OCI)
+- Security Policies required by:
+	- Big Data Service
+	- Oracle Function
+	- Data Catalog
+	- Data Integration Service
+	- Add edge nodes into Dynamic Group and allow to manage all resources in the demo compartment
 - Network artifacts:
 	- VCN
 	- Subnet
@@ -18,10 +27,8 @@ This terraform scripts allow to user provision stack of OCI resources needed for
 - Pull zeppelin image on the Cloudera Manager host
 - Create Application and "Hello World" function
 - Create API gateway
-- Create Load Balancer infront of EDGE nodes
 - Create Data Catalog Instance
 - Create Data Integration workspace
-- Kerberos principal "opc" and add keytab file on Edge nodes
 - Scripts to download test data sets
 
 In order to provision it, user have to follow steps:
