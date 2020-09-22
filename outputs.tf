@@ -87,7 +87,7 @@ resource "local_file" "bootstrap" {
     "echo \"export TENANCY_OCID=${var.tenancy_ocid}\" >> .bash_profile\n",
     "echo \"export OS_NAMESPACE=${data.oci_objectstorage_namespace.bds-demo-namespace.namespace}\" >> .bash_profile\n",
     // -----------------------------------------------------------------------------------------
-    "sudo chmod +x /home/opc/download*.sh /home/opc/dcat/dcat_stack.sh /home/opc/dcat/dcat_harvest.sh /home/opc/dis/create_df_weather.sh\n",
+    "sudo chmod +x /home/opc/download*.sh /home/opc/dcat/dcat_stack.sh /home/opc/dcat/dcat_harvest.sh /home/opc/dis/create_df_weather.sh /home/opc/dis/dis_crete_da.sh\n",
     "/home/opc/setup-edge.sh\n",
     "/home/opc/add-to-cm.sh\n",
     ]

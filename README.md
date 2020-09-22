@@ -193,7 +193,7 @@ You can verify results of the job into OCI Data Catalog console:
 
 The next script will create Data Flow for weather data in case you downloaded it in previous step:
 
-`[opc@bds-demo-egde0 dis]$ dis/create_df_weather`
+`[opc@bds-demo-egde0 dis]$ dis/create_df_weather.sh`
 
 After script done you can check in OCI UI Created Data Flow:
 
