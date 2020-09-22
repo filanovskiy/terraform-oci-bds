@@ -191,5 +191,3 @@ sudo systemctl restart cloudera-scm-agent
 sudo systemctl enable cloudera-scm-agent
 
 echo "$(date +"%T") finished host setup."
-./add-to-cm.sh
-

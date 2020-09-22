@@ -89,6 +89,7 @@ resource "local_file" "bootstrap" {
     // -----------------------------------------------------------------------------------------
     "sudo chmod +x /home/opc/download*.sh /home/opc/dcat/dcat_stack.sh /home/opc/dcat/dcat_harvest.sh /home/opc/dis/create_df_weather.sh\n",
     "/home/opc/setup-edge.sh\n",
+    "/home/opc/add-to-cm.sh\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
