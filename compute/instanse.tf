@@ -58,7 +58,7 @@ provisioner "file" {
     destination = "~/.ssh/bdsKey"
   }
 
-/* 
+ 
 // Add everything from "userdata" directory into Cloudera Manager host
 provisioner "file" {
     connection {
@@ -96,10 +96,10 @@ provisioner "file" {
     }
     source      = "./userdata/"
     destination = "~"
-  }  */
+  }  
 
 // Add everything from "userdata" directory into edge nodes, Master node, Cloudera Manager node
-provisioner "file" {
+/* provisioner "file" {
     connection {
       agent       = false
       timeout     = "1m"
@@ -109,7 +109,7 @@ provisioner "file" {
     }
     source      = "./userdata/"
     destination = "~"
-  } 
+  }  */
 
 
 // Run bootstrap scrips commands on the edge nodes
