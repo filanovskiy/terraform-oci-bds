@@ -89,6 +89,7 @@ resource "local_file" "bootstrap" {
     // -----------------------------------------------------------------------------------------
     "sudo chmod +x /home/opc/download*.sh /home/opc/dcat/dcat_stack.sh /home/opc/dcat/dcat_harvest.sh /home/opc/dis/create_df_weather.sh /home/opc/dis/dis_crete_da.sh\n",
     "/home/opc/setup-edge.sh\n",
+    "sleep 15\n",
     "/home/opc/add-to-cm.sh\n",
     ]
   )
