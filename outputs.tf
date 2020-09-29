@@ -93,7 +93,7 @@ resource "local_file" "bootstrap" {
     "export EDGE_FQDN=$(hostname -f)\n",
     "export EDGE_IP=$(hostname -i)\n",
     "export CM_ADMIN_USER=admin\n",
-    "export CM_IP=${var.cm_public_ip}\n",    
+    "export CM_IP=${module.compute.cm_public_ip}\n",    
     "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)}\n",
     "/home/opc/add-to-cm.sh\n",
     ]
