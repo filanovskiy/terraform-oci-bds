@@ -61,6 +61,7 @@ provisioner "file" {
  
 // Add everything from "userdata" directory into Cloudera Manager host
 provisioner "file" {
+  depends_on          = [oci_bds_bds_instance.demo-bds]
     connection {
       agent       = false
       timeout     = "1m"
@@ -74,6 +75,7 @@ provisioner "file" {
 
 // Add everything from "userdata" directory into Master Node
   provisioner "file" {
+    depends_on          = [oci_bds_bds_instance.demo-bds]
     connection {
       agent       = false
       timeout     = "1m"
@@ -87,6 +89,7 @@ provisioner "file" {
 
 // Add everything from "userdata" directory into edge nodes
 provisioner "file" {
+  depends_on          = [oci_bds_bds_instance.demo-bds]
     connection {
       agent       = false
       timeout     = "1m"
