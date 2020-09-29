@@ -41,6 +41,7 @@ resource "local_file" "edge_env" {
     "export EDGE_HOSTNAME=$(hostname -a)\n",
     "export EDGE_FQDN=$(hostname -f)\n",
     "export ETC_HOSTS=\"$EDGE_IP $EDGE_FQDN $EDGE_HOSTNAME\"",
+    "/home/opc/add-to-cm.sh\n",
     ]
   )
   filename = "userdata/env.sh"
