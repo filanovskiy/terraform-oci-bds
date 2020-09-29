@@ -59,7 +59,6 @@ resource "local_file" "generate_tpcds_data" {
 // Block generates bootstrap.sh file for edge nodes
 // -----------------------------------------------------------------------------------------
 resource "local_file" "bootstrap" {
-  depends_on          = [oci_bds_bds_instance.demo-bds]
   content = join("", ["#!/bin/bash \n",
     "source /home/opc/env.sh\n",
     "sudo chmod 400 /home/opc/.ssh/bdsKey \n",
