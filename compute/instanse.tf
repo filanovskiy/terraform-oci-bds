@@ -134,7 +134,6 @@ provisioner "file" {
     ]
   }
   provisioner "remote-exec" {
-    depends_on          = [oci_bds_bds_instance.demo-bds]
     connection {
       agent       = false
       timeout     = "1m"
