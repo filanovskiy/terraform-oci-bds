@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. env.sh
+. /home/opc/env.sh
 source /home/opc/env.sh
 
 echo "$(date +"%T") add host to Cloudera Manager and deploy parcels"
