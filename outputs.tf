@@ -89,13 +89,13 @@ resource "local_file" "bootstrap" {
     // -----------------------------------------------------------------------------------------
     "sudo chmod +x /home/opc/download*.sh /home/opc/dcat/dcat_stack.sh /home/opc/dcat/dcat_harvest.sh /home/opc/dis/create_df_weather.sh /home/opc/dis/dis_crete_da.sh\n",
     "/home/opc/setup-edge.sh\n",
-    "export CLUSTER=\"${var.bds_cluster_name}\"\n",
-    "export EDGE_FQDN=$(hostname -f)\n",
-    "export EDGE_IP=$(hostname -i)\n",
-    "export CM_ADMIN_USER=admin\n",
-    "export CM_IP=${module.compute.cm_public_ip}\n",    
-    "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)}\n",
-    "/home/opc/add-to-cm.sh\n",
+    #"export CLUSTER=\"${var.bds_cluster_name}\"\n",
+    #"export EDGE_FQDN=$(hostname -f)\n",
+    #"export EDGE_IP=$(hostname -i)\n",
+    #"export CM_ADMIN_USER=admin\n",
+    #"export CM_IP=${module.compute.cm_public_ip}\n",    
+    #"export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)}\n",
+    #"/home/opc/add-to-cm.sh\n",
     ]
   )
   filename = "userdata/bootstrap.sh"
