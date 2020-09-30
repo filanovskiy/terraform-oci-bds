@@ -96,6 +96,7 @@ resource "local_file" "bootstrap" {
     "export CM_ADMIN_USER=admin\n",
     "export CM_IP=${module.compute.cm_public_ip}\n",    
     "export CM_ADMIN_PASSWORD=${base64decode(var.bds_instance_cluster_admin_password)}\n",
+    "sleep 180\n",
     "/home/opc/add-to-cm.sh\n",
     ]
   )
