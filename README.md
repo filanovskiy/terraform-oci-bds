@@ -129,6 +129,10 @@ user_name = bds_admin_usr</p>
 10) to ssh to edge node, run:
 `ssh -i userdata/demoBDSkey opc@<edge ip address>`
 
+In case you want to deploy client roles on the edge nodes (reccomended) you have to run follow script:
+
+`ssh -i userdata/demoBDSkey opc@<edge ip address> /home/opc/add-to-cm.sh`
+
 11) For login from Edge node to utility node run:
 
 `ssh -i .ssh/bdsKey opc@$CM_IP`
